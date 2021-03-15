@@ -1,0 +1,114 @@
+<div style="display:flex;justify-content: center;flex-direction: column;width: 100%;">
+  <h2 style="text-align: center;" id="date">{{date}}</h2>
+  <h2 style="text-align: center;" id="time">{{time}}</h2>
+  <br>
+</div>
+<mat-tab-group   mat-align-tabs="center">
+    <mat-tab label="Gateway" style="font-size: 2rem;">
+        
+
+       <div style="display: flex;flex-direction: row; margin-left: 2rem; margin-right: 2rem; align-items: center;justify-content: center;">
+        <div style="float: left;width: 50%;padding: 2rem;">
+            <h4 style="font-size:3rem;font-weight: bolder;color: rgb(140,198,93);"> Check In      <mat-icon>arrow_upward</mat-icon></h4>
+       
+            <form [formGroup]="checkInForm" style="display:flex;justify-content: center;flex-direction: column;">
+                <mat-form-field class="justifier">
+                  <mat-label style="font-size: 1.5rem;">Agency</mat-label>
+                  <mat-select   formControlName="workingAgencyIn"  [readonly]="disableForm" style="font-size:1.5rem;" required >
+                    <mat-option *ngFor="let option of workingAgencies" [value]="option.name">
+                       {{option.name}}
+                    </mat-option>
+                   
+                  </mat-select>
+                </mat-form-field>
+    
+                  <mat-form-field class="justifier">
+                      <mat-label  style="font-size: 1.5rem;">Employee</mat-label>
+                      <mat-select name="buildingUse" formControlName="employeeNameIn" required [readonly]="disableForm" style="font-size:1.5rem;" >
+                        <mat-option *ngFor="let employee of employees" [value]="employee.name">
+                          {{employee.name}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+    
+                <button mat-flat-button  [ngStyle]="{'background-color':'rgb(140,198,93)', 'color':'white'}" style="width:100%;height: 5rem;font-size:3rem;font-weight: bolder;" (click)="checkIn()" [disabled]="!checkInForm.valid">Check In</button>
+                  
+              </form>
+        </div>
+
+         <div style="float: right;width: 50%; padding: 2rem;">
+            <h4  style="font-size:3rem;font-weight: bolder;color: rgb(73,141,212)">Check Out <mat-icon>arrow_downward</mat-icon></h4>
+            <form [formGroup]="checkOutForm" style="display:flex;justify-content: center;flex-direction: column;">
+                <mat-form-field class="justifier">
+                  <mat-label  style="font-size: 1.5rem;">Agency</mat-label>
+                  <mat-select   formControlName="workingAgencyOut"  [readonly]="disableForm"  required style="font-size: 1.5rem;">
+                    <mat-option *ngFor="let workAgency of workingAgencies" [value]="workAgency.name" style="font-size:1.5rem;">
+                      {{workAgency.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+    
+                  <mat-form-field class="justifier">
+                      <mat-label  style="font-size: 1.5rem;">Employee</mat-label>
+                      <mat-select name="buildingUse" formControlName="employeeNameOut"  [readonly]="disableForm"  required style="font-size:1.5rem;" >
+                        <mat-option *ngFor="let employee of employees" [value]="employee.name">
+                          {{employee.name}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+  
+              <button mat-flat-button [ngStyle]="{'background-color':'rgb(73,141,212)', 'color':'white'}" style="width:100%;height: 5rem;font-size:3rem;font-weight: bolder;" (click)="checkOut()" [disabled]="!checkOutForm.valid">Check Out</button>
+  
+                  
+              </form>
+         </div>
+       </div>
+   
+
+
+       
+
+    </mat-tab>
+
+    <mat-tab label="Todays Log"> 
+            <br>
+       <div style="margin: 2rem;">
+        <table mat-table [dataSource]="dataSource"  >
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="agency">
+              <th mat-header-cell *matHeaderCellDef> Agency </th>
+              <td mat-cell *matCellDef="let element"> {{element.agency}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+              </ng-container>
+          
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef> Time </th>
+              <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator #paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]">
+          </mat-paginator>
+       </div>
+
+        
+
+    </mat-tab>
+</mat-tab-group>

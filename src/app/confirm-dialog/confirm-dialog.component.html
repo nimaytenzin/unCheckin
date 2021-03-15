@@ -1,0 +1,10 @@
+<div>
+  <h1 mat-dialog-title style="font-size: 2rem;">{{data.title}}</h1>
+<div mat-dialog-content style="font-size: 1.5rem; padding: 2rem;">
+  {{data.message}}
+</div>
+<div mat-dialog-actions >
+  <button mat-flat-button    [ngStyle]="{'background-color':'rgb(140,198,93)', 'color':'white', 'padding-top':'1rem','padding-bottom':'1rem', 'float': 'left'}" value="Confirm" [mat-dialog-close]="true" cdkFocusInitial style="font-size: 2rem;width: 40% ">Yes</button>
+  <button mat-flat-button   [ngStyle]="{'background-color':'rgb(73,141,212)', 'color':'white','padding-top':'1rem','padding-bottom':'1rem','float': 'right'}" value="Cancel"  [mat-dialog-close]="false" style="font-size: 2rem;width: 45%; float: right;">No</button>
+</div>
+</div>
