@@ -63,6 +63,11 @@ export class LoginComponent implements OnInit {
     //     console.log(error);
     //   });
     // }
-    this.router.navigate(['selectzone']);
+    this.router.navigate(['checkin']);
+    this.snackBar.open('Welcome to Gateway', '', {
+            duration: 5000,
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar']
+          });
   }
 }
