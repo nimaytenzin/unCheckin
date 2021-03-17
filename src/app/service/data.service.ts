@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
   API_URL = environment.API_URL;
+  familyMember:any;
 
   constructor(
     private http: HttpClient

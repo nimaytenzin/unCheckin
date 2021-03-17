@@ -14,7 +14,7 @@
             <form [formGroup]="checkInForm" style="display:flex;justify-content: center;flex-direction: column;">
                 <mat-form-field class="justifier">
                   <mat-label style="font-size: 1.5rem;">Agency</mat-label>
-                  <mat-select   formControlName="workingAgencyIn"  [readonly]="disableForm" style="font-size:1.5rem;" required >
+                  <mat-select   formControlName="workingAgencyIn"  style="font-size:1.5rem;" required >
                     <mat-option *ngFor="let option of workingAgencies" [value]="option.name">
                        {{option.name}}
                     </mat-option>
@@ -24,7 +24,7 @@
     
                   <mat-form-field class="justifier">
                       <mat-label  style="font-size: 1.5rem;">Employee</mat-label>
-                      <mat-select name="buildingUse" formControlName="employeeNameIn" required [readonly]="disableForm" style="font-size:1.5rem;" >
+                      <mat-select name="buildingUse" formControlName="employeeNameIn" required  style="font-size:1.5rem;" >
                         <mat-option *ngFor="let employee of employees" [value]="employee.name">
                           {{employee.name}}
                         </mat-option>
@@ -41,7 +41,7 @@
             <form [formGroup]="checkOutForm" style="display:flex;justify-content: center;flex-direction: column;">
                 <mat-form-field class="justifier">
                   <mat-label  style="font-size: 1.5rem;">Agency</mat-label>
-                  <mat-select   formControlName="workingAgencyOut"  [readonly]="disableForm"  required style="font-size: 1.5rem;">
+                  <mat-select   formControlName="workingAgencyOut"     required style="font-size: 1.5rem;">
                     <mat-option *ngFor="let workAgency of workingAgencies" [value]="workAgency.name" style="font-size:1.5rem;">
                       {{workAgency.name}}
                     </mat-option>
@@ -50,7 +50,7 @@
     
                   <mat-form-field class="justifier">
                       <mat-label  style="font-size: 1.5rem;">Employee</mat-label>
-                      <mat-select name="buildingUse" formControlName="employeeNameOut"  [readonly]="disableForm"  required style="font-size:1.5rem;" >
+                      <mat-select name="buildingUse" formControlName="employeeNameOut"    required style="font-size:1.5rem;" >
                         <mat-option *ngFor="let employee of employees" [value]="employee.name">
                           {{employee.name}}
                         </mat-option>

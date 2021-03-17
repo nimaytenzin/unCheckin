@@ -37,6 +37,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { RequestsComponent } from './requests/requests.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { AgencyDialogComponent } from './agency-dialog/agency-dialog.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     AgencyTableComponent,
     UserTableComponent,
     RequestsComponent,
-    MainDashComponent
+    MainDashComponent,
+    AgencyDialogComponent
   ],
   imports: [
     BrowserModule,
