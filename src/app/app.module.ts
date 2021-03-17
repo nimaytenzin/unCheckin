@@ -5,12 +5,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
-import { SelectZoneComponent } from './select-zone/select-zone.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {
   MatButtonModule,
-  MatPaginator,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
@@ -28,38 +25,34 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { CameraComponent } from './camera/camera.component';
 import {WebcamModule} from 'ngx-webcam';
-import { UploadImageComponent } from './upload-image/upload-image.component';
-import { UpdatePlotComponent } from './update-plot/update-plot.component';
-import { UpdateRoadComponent } from './update-road/update-road.component';
-import { UpdateFootpathComponent } from './update-footpath/update-footpath.component';
-import { RegisterUserComponent } from "./register-user/register-user.component";
-import { MapviewComponent } from './mapview/mapview.component';
-import { UpdateBuildingComponent } from './update-building/update-building.component';
 import { CheckInComponent } from './check-in/check-in.component';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AgencyTableComponent } from './agency-table/agency-table.component';
+import { UserTableComponent } from './user-table/user-table.component';
+import { RequestsComponent } from './requests/requests.component';
+import { MainDashComponent } from './main-dash/main-dash.component';
+import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ErrorComponent,
-    SelectZoneComponent,
-    DashboardComponent,
-    ChangePasswordComponent,
     ConfirmDialogComponent,
-    CameraComponent,
-    UploadImageComponent,
-    UpdatePlotComponent,
-    UpdateRoadComponent,
-    UpdateFootpathComponent,
-    MapviewComponent,
-    RegisterUserComponent,
-    UpdateBuildingComponent,
-    CheckInComponent
+    CheckInComponent,
+    SidebarComponent,
+    HeaderComponent,
+    DashboardComponent,
+    AgencyTableComponent,
+    UserTableComponent,
+    RequestsComponent,
+    MainDashComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +78,9 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
     MatCheckboxModule,
     WebcamModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}

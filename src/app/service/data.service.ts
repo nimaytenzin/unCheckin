@@ -51,6 +51,16 @@ export class DataService {
       );
   }
 
+  //get agency lists
+  getAllAgency(){
+    return this.http
+    .get<any>(`${this.API_URL}/agency/get-all`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
   //getbuildings
   getBuildingsShape(lap_id){
     return this.http

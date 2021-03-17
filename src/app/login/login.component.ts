@@ -38,36 +38,54 @@ export class LoginComponent implements OnInit {
   login() {
     this.submitted = true;
 
-    // if (this.loginForm.valid) {
-    //   const loginId = this.loginForm.get('userName').value;
-    //   const password = this.loginForm.get('password').value;
+    if (this.loginForm.valid) {
+      const loginId = this.loginForm.get('userName').value;
+      const password = this.loginForm.get('password').value;
      
       
-    //   this.authService.validateLogin(loginId, password).subscribe(response => {
-    //     sessionStorage.setItem('userId', response.data.id);
-    //     localStorage.setItem('loginId', loginId);
-    //     this.router.navigate(['selectzone']);
-    //     this.snackBar.open('Welcome' + response.data.username, '', {
-    //       duration: 5000,
-    //       verticalPosition: 'bottom',
-    //       panelClass: ['success-snackbar']
-    //     });
-    //   },
-    //   error => {
-    //     this.submitted = false;
-    //     this.snackBar.open('Invalid login credentials, please try again', '', {
-    //       duration: 5000,
-    //       verticalPosition: 'bottom',
-    //       panelClass: ['error-snackbar']
-    //     });
-    //     console.log(error);
-    //   });
-    // }
-    this.router.navigate(['checkin']);
-    this.snackBar.open('Welcome to Gateway', '', {
-            duration: 5000,
-            verticalPosition: 'top',
-            panelClass: ['success-snackbar']
-          });
+      // this.authService.validateLogin(loginId, password).subscribe(response => {
+      //   sessionStorage.setItem('userId', response.data.id);
+      //   localStorage.setItem('loginId', loginId);
+      //   this.router.navigate(['selectzone']);
+      //   this.snackBar.open('Welcome' + response.data.username, '', {
+      //     duration: 5000,
+      //     verticalPosition: 'bottom',
+      //     panelClass: ['success-snackbar']
+      //   });
+      // },
+      // error => {
+      //   this.submitted = false;
+      //   this.snackBar.open('Invalid login credentials, please try again', '', {
+      //     duration: 5000,
+      //     verticalPosition: 'bottom',
+      //     panelClass: ['error-snackbar']
+      //   });
+      //   console.log(error);
+      // });
+
+      if(loginId === "user"){
+        this.router.navigate(['checkin']);
+        this.snackBar.open('Welcome to Gate Managemnt System', '', {
+                duration: 5000,
+                verticalPosition: 'bottom',
+                panelClass: ['success-snackbar']
+        });
+      }else if(loginId === "admin"){
+        this.router.navigate(['admin']);
+        this.snackBar.open('Welcome to Gate Managemnt System', '', {
+                duration: 5000,
+                verticalPosition: 'bottom',
+                panelClass: ['success-snackbar']
+        });
+      }else{
+        this.snackBar.open('Invalid Credentials', '', {
+          duration: 5000,
+          verticalPosition: 'bottom',
+          panelClass: ['error-snackbar']
+  });
+      }
+    }
+
+    
   }
 }

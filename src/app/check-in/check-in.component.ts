@@ -14,7 +14,6 @@ interface OPTIONS2{
 
 export interface PeriodicElement {
   name: string;
-  position: number;
   agency: string;
   time: string;
   type:string;
@@ -22,31 +21,8 @@ export interface PeriodicElement {
 let  t = new Date().getDate().toString()
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hem Bdr', agency: "UNDP", time: t, type:"CheckIn"},
-  {position: 2, name: 'Nima', agency: "UNDP", time: t, type:"CheckIn"},
-  {position: 3, name: 'Dorji', agency: "UNDP", time: t, type:"CheckIn"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"},
-  {position: 4, name: 'Pema', agency: "UNDP", time: t, type:"CheckOut"}
+  { name: 'Hem Bdr', agency: "UNDP", time: t, type:"CheckIn"},
+  { name: 'Nima', agency: "UNDP", time: t, type:"CheckIn"}
 
 ];
 

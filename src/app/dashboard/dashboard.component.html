@@ -1,62 +1,21 @@
 
-<div class="form-wraper">
-  <div class="form-container card" (click)="updateFeature()" >
-    <div class="form-header" style="text-align: center;">
-      <span class="material-icons" style="padding: 6px; font-size: 70px;"  [ngStyle]="{'color':'#B3933E'}">
-        cloud_upload
-      </span>
-    </div>
-    <div class="form-body" style="letter-spacing: 2px;margin-top: 12px;text-align: center;">
-     Update Feature 
-    </div>
-    <div class="form-body" style="letter-spacing: 1px;margin-top: 1px;font-size: 13px;color: #696969;text-align: center;">
-      Enter Bulding Information
-    </div>
+  <div style="display: flex; flex-direction: row; justify-content: center;margin:2px">
+      <h2 style="text-align: center; padding-right: 20px;color: rgb(46,135,200);">Welcome to Gate Management System</h2>
+      <img src="../../assets/un-logo.png" width="150px">
   </div>
-</div>
+  
+  <mat-tab-group   mat-align-tabs="center">
+      <mat-tab label="Dashboard" style="font-size: 2rem;">
+            <app-main-dash></app-main-dash>
+      </mat-tab>
+      <mat-tab label="Manage Agencies"> 
+        <app-agency-table></app-agency-table>
+    </mat-tab>
+      <mat-tab label="Manage Users"> 
+         <app-user-table></app-user-table>
+      </mat-tab>
 
-
-<div class="form-wraper">
-  <div class="form-container card" (click)="gotocamera()" style="background-color: #f2f8f9;" [ngStyle]="{'color':'#B3933E'}">
-    <div class="form-header" style="text-align: center;">
-      <span class="material-icons" style="padding: 6px; font-size: 70px;">
-        camera
-      </span>
-    </div>
-    <div class="form-body" style="letter-spacing: 2px;margin-top: 12px;text-align: center;">
-      Take Picture of Feature
-    </div>
-    <div class="form-body" style="letter-spacing: 1px;margin-top: 1px;font-size: 13px;color: #696969;text-align: center;">
-      Take Picture of Feature
-    </div>
-  </div>
-</div>
-<div class="form-wraper">
-  <div class="form-container card" (click)="markcomplete()" style="background-color:white;" [ngStyle]="{'color':'#B3933E'}">
-    <div class="form-header" style="text-align: center;">
-      <span class="material-icons" style="padding: 6px; font-size: 70px;">
-        cloud_done
-      </span>
-    </div>
-    <div class="form-body" style="letter-spacing: 2px;margin-top: 12px;text-align: center;">
-      Mark Feature as Complete 
-    </div>
-    <div class="form-body" style="letter-spacing: 1px;margin-top: 1px;font-size: 13px;color: #696969;text-align: center;">
-      Make sure all the information is complete before marking feature as complete
-    </div>
-  </div>
-</div>
-
-<div class="form-wraper">
-  <div class="form-container card" (click)="goback()" style="background-color: white;" [ngStyle]="{'color':'#B3933E'}">
-    <div class="form-header" style="text-align: center;">
-      <span class="material-icons" style="padding: 6px; font-size: 70px;">
-        arrow_back_ios
-      </span>
-    </div>
-    <div class="form-body" style="letter-spacing: 2px;margin-top: 12px;text-align: center;">
-      Go back to map
-    </div>
-  </div>
-</div>
-
+      <mat-tab label="Process Requests"> 
+         <app-requests></app-requests>
+    </mat-tab>
+  </mat-tab-group>

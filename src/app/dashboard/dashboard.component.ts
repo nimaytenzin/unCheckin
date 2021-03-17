@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
-import { MatDialog, MatSnackBar } from '@angular/material';
-import { DataService } from '../service/data.service';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { SoundService } from '../service/sound.service';
+import { MatTableDataSource } from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 
-export class Qrcode {
-  qr_code_id: number;
-  sub_zone_id: number;
-  user_id: number;
-  household_detail_id: number;
-  lat: number;
-  lng: number;
-  accuracy: number;
+export interface PeriodicElement {
+  name: string;
+  agency: string;
+  time: string;
+  type:string;
 }
+let  t = new Date().getDate().toString()
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  { name: 'Hem Bdr', agency: "UNDP", time: t, type:"CheckIn"},
+  { name: 'Nima', agency: "UNDP", time: t, type:"CheckIn"}
+
+];
 
 @Component({
   selector: 'app-dashboard',
@@ -21,81 +22,43 @@ export class Qrcode {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  timeNow:any;
+  date:any;
+  time:any;
 
-  qrcode: Qrcode;
-  longitude: number;
-  latitude: number;
-  accuracy: number;
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public dialog: MatDialog,
-    private dataService: DataService,
-    private snackBar: MatSnackBar,
-    private soundService: SoundService
-  ) {
-    this.qrcode = new Qrcode();
-  }
+  displayedColumns: string[] = ['position', 'name', 'agency','type', 'time'];
+  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  constructor() { }
 
   ngOnInit() {
-    sessionStorage.setItem('buildingId',this.route.snapshot.params['id'])
   }
 
-  redirect(path) {
-    sessionStorage.setItem('transactionType', 'registration');
-    this.router.navigate([path]);
-  }
+  clock(){
+    let d = new Date();
+    let date = d.getDate();
+    let month = d.getMonth();
+    let montharr =["Jan","Feb","Mar","April","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+    let m=montharr[month];
+    let year = d.getFullYear();
+    var day = d.getDay();
+    var dayarr =["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
+    let dt=dayarr[day];
+    let hour =d.getHours();
+    let min = d.getMinutes();
+    let sec = d.getSeconds();
+    let hr;
 
-  gotocamera(){
-    this.router.navigate(['camera']);
-  }
-
-  goback(){
-    this.router.navigate(['mapview']);
-  }
-
-  update() {
-    sessionStorage.setItem('transactionType', 'update');
-    this.router.navigate(['map']);
-  }
-  // unit(){
-  //   this.router.navigate([])
-  // }
-
-  regHouse(){
-    this.router.navigate(['building']);
-  }
-
-  updateFeature(){
-    this.router.navigate(['updateplot'])
-  }
-  unit(){
-    this.router.navigate(['unit']);
-  }
-  markcomplete(){
-    this.snackBar.open('Building Marked Complete', '', {
-      duration: 5000,
-      verticalPosition: 'bottom',
-      panelClass: ['success-snackbar']
-    });
-  }
-  getLocation(): void {
-    if (navigator.geolocation) {
-        const options = {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0
-        };
-        navigator.geolocation.getCurrentPosition((position) => {
-          this.longitude = position.coords.longitude;
-          this.latitude = position.coords.latitude;
-          this.accuracy = position.coords.accuracy;
-        }, error => {
-          console.error('No support for geolocation');
-        }, options);
-    } else {
-       console.error('No support for geolocation');
+    let period = "AM";
+    if (hour == 0){
+      hr = 12;
+    } 
+    if (hour > 12) {	    
+      hr = hour - 12;	    
+      period = "PM";	  
     }
-  }
+
+    this.date = dt+" "+date+" "+m+" "+year;
+    this.time=hr+":"+min+":"+sec + " " + period;
+}
+
 }
