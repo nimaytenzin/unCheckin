@@ -4,11 +4,17 @@ import { MatSnackBar, MatDialog, MatTableDataSource } from '@angular/material';
 import * as moment from 'moment';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import {MatPaginator} from '@angular/material/paginator';
+import { DataService } from '../service/data.service';
 interface OPTIONS{
   name:string,
   logoPath:string
 }
 interface OPTIONS2{
+  name:string
+}
+
+interface Agencies{
+  id:number,
   name:string
 }
 
@@ -32,13 +38,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./check-in.component.scss']
 })
 export class CheckInComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'agency','type', 'time'];
+  displayedColumns: string[] = ['position', 'name','type', 'time','actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   checkInForm:FormGroup;
   checkOutForm:FormGroup;
   timeNow:any;
   date:any;
   time:any;
+
+  //populate agencylists 
+  agencyLists=[
+    {name:'UNICEF'},
+    {name:'UNDP'},
+    {name:'RCO'},
+    {name:'UNFPA'},
+    {name:'WFP'},
+    {name:'FAO'},
+    {name:'UNODC'},
+    {name:'WHO'},
+    {name:'WB-IFC'},
+    {name:'ADB'}
+  ]
 
   @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
 
@@ -59,6 +79,7 @@ export class CheckInComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
+    private dataservice:DataService
   ) { }
 
 
@@ -139,6 +160,8 @@ export class CheckInComponent implements OnInit, AfterViewInit {
       if (hour > 12) {	    
         hr = hour - 12;	    
         period = "PM";	  
+      }else{
+        hr = hour
       }
 
       this.date = dt+" "+date+" "+m+" "+year;
@@ -173,5 +196,12 @@ export class CheckInComponent implements OnInit, AfterViewInit {
         }
     });
   }
+
+
+  setDataSource(a){
+          this.dataservice.getEmployeesByAgency(a.id).subscribe(res =>{
+            this.dataSource = res
+          })
+    }
 
 }

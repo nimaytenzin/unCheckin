@@ -61,6 +61,42 @@ export class DataService {
     )
   }
 
+  getEmployeesByAgency(id){
+    return this.http
+    .get<any>(`${this.API_URL}/agency/get-employees/${id}`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /// end of useful apis
+
 
   //getbuildings
   getBuildingsShape(lap_id){

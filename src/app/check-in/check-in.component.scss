@@ -35,3 +35,20 @@ mat-table {
   overflow: auto;
   max-height: 500px;
 }
+
+.agency-lists{
+  display: flex;
+  flex-direction: row;
+
+}
+.agency-lists button{
+  display: inline-block;
+  vertical-align: top;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  background:none;
+  margin: 0 4px;
+  text-align: center;
+  color:rgb(46,135,200) ;
+}

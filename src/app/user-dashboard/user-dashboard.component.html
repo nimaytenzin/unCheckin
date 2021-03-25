@@ -1,0 +1,30 @@
+<div style="display: flex; flex-direction: row; justify-content: center;margin:2px">
+    <div style="flex-direction: column; justify-content: center;margin-top: 1rem;">
+        <h2 style="text-align: center; padding-right: 20px;color: rgb(46,135,200);">Welcome to Gate Management System</h2>
+        <h2 style="text-align: center;" id="date">{{date}}</h2>
+        <h2 style="text-align: center;" id="time">{{time}}</h2>
+    </div>
+    <img src="../../assets/un-logo.png" width="150px">
+</div>
+
+<div style="display:flex;justify-content: center;flex-direction: column;width: 100%;">
+    
+    <br>
+  </div>
+  <mat-divider></mat-divider>
+
+<div class="container">
+   <button mat-flat-button [routerLink]="['employees']" routerLinkActive="active">  Employees</button>
+   <button mat-flat-button [routerLink]="['visitors']" routerLinkActive="active"> Visitors</button>
+   <button mat-flat-button [routerLink]="['vehicles']"routerLinkActive="active" > Vehicles</button>
+   <button mat-flat-button [routerLink]="['gpass']" routerLinkActive="active"> Gate Pass</button>
+</div>
+
+<div>
+    <router-outlet></router-outlet>
+</div>
+
+
+<footer>
+    <p>© UN Gate Mangement System 2021</p>
+</footer>

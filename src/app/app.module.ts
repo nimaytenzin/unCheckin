@@ -38,7 +38,11 @@ import { RequestsComponent } from './requests/requests.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { AgencyDialogComponent } from './agency-dialog/agency-dialog.component';
-
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { GatePassComponent } from './checkins/gate-pass/gate-pass.component';
+import { EmployeeCheckinComponent } from "./checkins/employee-checkin/employee-checkin.component";
+import { VehicleCheckinComponent } from "./checkins/vehicle-checkin/vehicle-checkin.component";
+import {VisitorsCheckinComponent  } from "./checkins/visitors-checkin/visitors-checkin.component";
 
 @NgModule({
   declarations: [
@@ -54,7 +58,12 @@ import { AgencyDialogComponent } from './agency-dialog/agency-dialog.component';
     UserTableComponent,
     RequestsComponent,
     MainDashComponent,
-    AgencyDialogComponent
+    AgencyDialogComponent,
+    UserDashboardComponent,
+    GatePassComponent,
+    EmployeeCheckinComponent,
+    VehicleCheckinComponent,
+    VisitorsCheckinComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +91,8 @@ import { AgencyDialogComponent } from './agency-dialog/agency-dialog.component';
     MatTabsModule,
     MatTableModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+  
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}

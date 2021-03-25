@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#date,#time{
+    color:rgb(46,135,200) ;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 7rem;
+}
+
+.active{
+    background-color: rgb(108, 182, 59);
+
+}
+
+.container button{
+    width: 10rem;
+    height: 3rem;
+    background-color: rgb(46,135,200);
+    border-radius: 0;
+    color: white;
+    font-size: large;
+    font-weight: lighter;
+}
+
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color:black;
+    text-align: center;
+    opacity: .8;
+  }
+  .container button .active{
+    width: 10rem;
+    height: 3rem;
+    background-color:crimson;
+    border-radius: 0;
+    color: white;
+    font-size: large;
+    font-weight: lighter;
+}

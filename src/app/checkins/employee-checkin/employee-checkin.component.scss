@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main-container{
+    margin: 0 10rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.container button{
+    display: inline-block;
+    width: 10rem;
+    height: 3rem;
+    background-color: rgb(46,135,200);
+    border-radius: 0;
+    color: white;
+    font-size: large;
+    font-weight: lighter;
+}
+
