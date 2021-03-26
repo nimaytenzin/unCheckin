@@ -7,21 +7,19 @@
     <img src="../../assets/un-logo.png" width="150px">
 </div>
 
-<div style="display:flex;justify-content: center;flex-direction: column;width: 100%;">
-    
-    <br>
-  </div>
   <mat-divider></mat-divider>
 
-<div class="container">
-   <button mat-flat-button [routerLink]="['employees']" routerLinkActive="active">  Employees</button>
-   <button mat-flat-button [routerLink]="['visitors']" routerLinkActive="active"> Visitors</button>
-   <button mat-flat-button [routerLink]="['vehicles']"routerLinkActive="active" > Vehicles</button>
-   <button mat-flat-button [routerLink]="['gpass']" routerLinkActive="active"> Gate Pass</button>
-</div>
-
-<div>
-    <router-outlet></router-outlet>
+<div style="width: 100%;">
+    <div class="container">
+        <button mat-flat-button [routerLink]="['employees']" routerLinkActive="active">  Employees</button>
+        <button mat-flat-button [routerLink]="['visitors']" routerLinkActive="active"> Visitors</button>
+        <button mat-flat-button [routerLink]="['vehicles']"routerLinkActive="active" > Vehicles</button>
+        <button mat-flat-button [routerLink]="['gpass']" routerLinkActive="active"> Gate Pass</button>
+     </div>
+     
+     <div class="router">
+         <router-outlet></router-outlet>
+     </div>
 </div>
 
 

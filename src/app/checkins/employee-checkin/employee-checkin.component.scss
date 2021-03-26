@@ -2,10 +2,10 @@
     padding: 0;
     margin: 0;
 }
-
-.main-container{
-    margin: 0 10rem;
+h3{
+    text-align: center;
 }
+
 
 .container{
     display: flex;
@@ -24,3 +24,19 @@
     font-weight: lighter;
 }
 
+.employee-table,table{
+    width: 100%;
+    text-align: justify;
+}
+
+table button{
+    width: 8rem;
+}
+
+.check-in{
+    background-color: rgb(140,198,93);
+}
+
+.check-out{
+    background-color: rgb(88,141,222);
+}

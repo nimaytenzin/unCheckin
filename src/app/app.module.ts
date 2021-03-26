@@ -27,7 +27,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {WebcamModule} from 'ngx-webcam';
-import { CheckInComponent } from './check-in/check-in.component';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -50,7 +49,6 @@ import {VisitorsCheckinComponent  } from "./checkins/visitors-checkin/visitors-c
     LoginComponent,
     ErrorComponent,
     ConfirmDialogComponent,
-    CheckInComponent,
     SidebarComponent,
     HeaderComponent,
     DashboardComponent,

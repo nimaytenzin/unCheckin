@@ -1,7 +1,39 @@
 <div class="main-container">
-    <p>Check In Employees</p>
-    <div class="container" *ngFor="let item of agencyLists">
+    <h3>Employees</h3>
+    <div class="container" *ngFor="let item of agencyLists" (click)="getStaffLists(item)">
         <button mat-flat-button>  {{item.name}}</button>
-     </div>
+    </div>
+
+    <div class="employee-table">
+
+        <table mat-table [dataSource]="dataSource" >
+
+            <ng-container matColumnDef="index">
+              <th mat-header-cell *matHeaderCellDef > No. </th>
+              <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="role">
+              <th mat-header-cell *matHeaderCellDef> Role </th>
+              <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-link"> 
+                  <button mat-raised-button class="check-in" (click)="checkIn(element)" [disabled]="checkIndisable(element)">Check In</button> | 
+                  <button mat-raised-button  class="check-out" (click)="checkOut(element)"  [disabled]="!checkIndisable(element)">Check Out</button>  
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
     
 </div>
+

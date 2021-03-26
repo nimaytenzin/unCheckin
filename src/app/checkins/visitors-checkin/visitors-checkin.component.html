@@ -1,1 +1,44 @@
-<p>visitors-checkin works!</p>
+<div class="visitors-table">
+    <h3>Visitors Today</h3>
+
+    <button mat-flat-button color = "primary" (click)="addVisitors()">
+        Add Visitors
+    </button>
+    <table mat-table [dataSource]="dataSource" >
+
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef > No. </th>
+          <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cid">
+            <th mat-header-cell *matHeaderCellDef> CID </th>
+            <td mat-cell *matCellDef="let element"> {{element.cid}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="requestBy">
+        <th mat-header-cell *matHeaderCellDef> Requested By </th>
+        <td mat-cell *matCellDef="let element"> Hem Dorji,UNICEF </td>
+        </ng-container>
+
+        <ng-container matColumnDef="contact">
+          <th mat-header-cell *matHeaderCellDef> Contact </th>
+          <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link"> 
+              <button mat-raised-button class="check-in" (click)="checkIn(element)" [disabled]="checkIndisable(element)">Check In</button> | 
+              <button mat-raised-button  class="check-out" (click)="checkOut(element)"  [disabled]="!checkIndisable(element)">Check Out</button>  
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>

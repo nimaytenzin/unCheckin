@@ -2,11 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { API_URL } from "src/app/app.constants";
+
 export const environment = {
   production: false,
   // API_URL: 'http://localhost:8000'
   // API_URL: 'https://zhichar.myddns.rocks/api',
-  API_URL : 'https://zhichar.ddnsfree.com/gpass/'
+  // API_URL : 'https://zhichar.ddnsfree.com/gpass/'
+  API_URL: 'http://192.168.6.201:8000/api'
 };
 
 /*

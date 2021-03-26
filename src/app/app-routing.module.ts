@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
-import { CheckInComponent } from "./check-in/check-in.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { VisitorsCheckinComponent } from './checkins/visitors-checkin/visitors-checkin.component';
@@ -13,7 +12,6 @@ import { GatePassComponent } from './checkins/gate-pass/gate-pass.component';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'checkin', component: CheckInComponent},
   {path:'user-dash', component:UserDashboardComponent,
     children: [
       { path: 'employees', component:  EmployeeCheckinComponent},
