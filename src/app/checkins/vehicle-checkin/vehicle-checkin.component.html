@@ -9,18 +9,32 @@
 
         <ng-container matColumnDef="carNumber">
           <th mat-header-cell *matHeaderCellDef> Vehicle Number </th>
-          <td mat-cell *matCellDef="let element"> {{element.carNumber}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.vnumber}} </td>
         </ng-container>
 
         <ng-container matColumnDef="driver">
-            <th mat-header-cell *matHeaderCellDef> Select Driver </th>
-            <td mat-cell *matCellDef="let element"> {{element.carNumber}} </td>
-          </ng-container>
+          <th mat-header-cell *matHeaderCellDef> Driver </th>
+          <td mat-cell *matCellDef="let element"> 
+            <form [formGroup]="selectDriverForm">
+              <mat-form-field appearance="none">
+                <mat-label>Select Driver</mat-label>
+                <mat-select   formControlName="selectedDriver" >
+                  <mat-option *ngFor="let option of driverLists" [value]="option.name" >
+                    {{option.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+            </form>
+          </td>
+        </ng-container>
+
+        
+
 
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let element" class="action-link"> 
-              <button mat-raised-button class="check-in" (click)="checkIn(element)" [disabled]="checkIndisable(element)">Check In</button> | 
+              <button mat-raised-button class="check-in" (click)="checkIn(element)" [disabled]="checkIndisable(element)" >Check In</button> | 
               <button mat-raised-button  class="check-out" (click)="checkOut(element)"  [disabled]="!checkIndisable(element)">Check Out</button>  
             </td>
         </ng-container>

@@ -3,6 +3,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/service/data.service';
 import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
+
 export interface Visitors {
   name: string;
   address:string;
@@ -10,14 +11,6 @@ export interface Visitors {
   contact:number;
   status:string;
 }
-
-// const ELEMENT_DATA: Visitors[] = [
-//   { name: 'Hem Dorji', cid: "Driver",contact: 17552321, status:"checkedIn" },
-//   { name: 'Kennny Bdr', cid: "Staff",contact: 17552321,status:"checkedIn"},
-//   { name: 'Sonam Eden Rai',cid: "Driver",contact: 17552321,status:"checkedIn"},
-//   { name: 'Kinley Chettri', cid:"Staff",contact: 17552321,status:"checkedOut"},
-// ];
-
 
 @Component({
   selector: 'app-visitors-checkin',
@@ -28,7 +21,6 @@ export class VisitorsCheckinComponent implements OnInit {
   displayedColumns: string[] = ['index', 'name', 'cid','contact','requestBy','action'];
   dataSource :[]
   agencyLists:[]
-
   checkInDisable:boolean;
   checkOutDisable:boolean;
   
@@ -41,15 +33,12 @@ export class VisitorsCheckinComponent implements OnInit {
 
   ngOnInit() {
     this.dataservice.getAllVisitors().subscribe(res=>{
-      console.log(res)
       this.dataSource = res.data
     })
-    
   }
 
 
   checkIn(e){
-    console.log('CHECKIN',e.name)
 
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       width: '80vh',
@@ -100,7 +89,6 @@ export class VisitorsCheckinComponent implements OnInit {
   }
 
   getStaffLists(r){
-    console.log(r)
   }
 
   checkIndisable(element){

@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { DataService } from 'src/app/service/data.service';
+import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
 export interface Visitors {
   carNumber: string;
   status:string;
 }
 
-
-
-const ELEMENT_DATA: Visitors[] = [
-  { carNumber: 'BP-1A-1234', status:"check-in" },
-  { carNumber: 'BP-1-3001', status:"check-out"},
-  { carNumber: 'BP-1A-1234',status:"check-in"},
-  { carNumber: 'BP-2-4234', status:"check-out"},
-];
 @Component({
   selector: 'app-vehicle-checkin',
   templateUrl: './vehicle-checkin.component.html',
@@ -20,37 +15,109 @@ const ELEMENT_DATA: Visitors[] = [
 })
 export class VehicleCheckinComponent implements OnInit {
   displayedColumns: string[] = ['index', 'carNumber', 'driver','action'];
-  dataSource = ELEMENT_DATA;
+  selectDriverForm:FormGroup;
+  dataSource;
   agencyLists:[]
-
-  ruleGroupColumns: String[] = [
-    'MERGE',
-    'FACILITY',
-    'COMPANY'
-  ];
-  columnFormControl = new FormControl(this.ruleGroupColumns);
+  driverLists:[]
+  driver = new FormControl()
+ 
 
   checkInDisable:boolean;
   checkOutDisable:boolean;
-  constructor() { }
+  constructor(
+    private dataservice:DataService,
+    private fb:FormBuilder,
+    private snackbar:MatSnackBar,
+    private dialog:MatDialog
+  ) { }
 
   ngOnInit() {
+    this.reactiveForm()
+    this.dataservice.getCars().subscribe(res => {
+      this.dataSource = res.data
+    })
+    this.dataservice.getDrivers().subscribe(res => {
+      this.driverLists = res.data
+
+    })
+
+  }
+
+  reactiveForm(){
+    this.selectDriverForm = this.fb.group({
+      selectedDriver:[],
+    });    
   }
 
   checkIn(e){
-    console.log('CHECKIN',e.name)
+
+    if(this.selectDriverForm.get('selectedDriver').value === null){
+      this.snackbar.open(`Please Select Driver`, '',{
+        verticalPosition:'bottom',
+        duration:3000
+      })  
+    }else{
+      let driverName = this.selectDriverForm.get('selectedDriver').value
+      const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+        data:{
+          title: "CheckIn?",
+          message:`Check-In ${e.vnumber}, Driver: ${driverName}?`
+        }
+      });
+      confirmDialog.afterClosed().subscribe(result => {
+        if(result === true){
+          this.snackbar.open(`Checked In ${e.vnumber}, driver: ${driverName}`, '',{
+            verticalPosition:'bottom',
+            duration:3000
+          })
+          this.selectDriverForm.patchValue( {'selectedDriver':null} );      
+        }else{
+          this.snackbar.open(`Cancelled`, '',{
+            verticalPosition:'bottom',
+            duration:3000
+          })
+          this.selectDriverForm.patchValue( {'selectedDriver':null} ); 
+        }
+      })
+    }
+
+    
   }
 
   checkOut(e){
-    console.log('CHECKooUT',e.name)
+    if(this.selectDriverForm.get('selectedDriver').value === null){
+      this.snackbar.open(`Please Select Driver`, '',{
+        verticalPosition:'bottom',
+        duration:3000
+      })  
+    }else{
+      let driverName = this.selectDriverForm.get('selectedDriver').value
+      const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+        data:{
+          title: "CheckOut?",
+          message:`Check-Out ${e.vnumber}, Driver: ${driverName}?`
+        }
+      });
+      confirmDialog.afterClosed().subscribe(result => {
+        if(result === true){
+          this.snackbar.open(`Checked Out ${e.vnumber}, driver: ${driverName}`, '',{
+            verticalPosition:'bottom',
+            duration:3000
+          })
+          this.selectDriverForm.patchValue( {'selectedDriver':null} );      
+        }else{
+          this.snackbar.open(`Cancelled`, '',{
+            verticalPosition:'bottom',
+            duration:3000
+          })
+          this.selectDriverForm.patchValue( {'selectedDriver':null} ); 
+        }
+      })
+    }
   }
 
   getStaffLists(r){
     //dynamically set the data source to the table
-    
-    console.log(r)
-
-
   }
 
   checkIndisable(element){
@@ -61,9 +128,6 @@ export class VehicleCheckinComponent implements OnInit {
     }
   }
 
-  get displayColumns() {
-    return this.columnFormControl.value;
-  }
 
 
 }

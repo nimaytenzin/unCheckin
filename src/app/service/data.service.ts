@@ -77,6 +77,22 @@ export class DataService {
     ) 
   }
 
+  getDrivers(){
+    return this.http
+    .get<any>(`${this.API_URL}/getdriver`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    ) 
+  }
+
+   getCars(){
+    return this.http
+    .get<any>(`${this.API_URL}/car`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    ) 
+  }
+
   getAllVisitors(){
     return this.http
     .get<any>(`${this.API_URL}/visitor`, this.httpOptions)

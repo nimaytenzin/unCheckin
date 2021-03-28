@@ -1,9 +1,11 @@
 <div class="visitors-table">
     <h3>Visitors Today</h3>
-
-    <button mat-flat-button color = "primary" (click)="addVisitors()">
-        Add Visitors
-    </button>
+<div style="display: flex; justify-content: flex-end;">
+  
+  <button mat-flat-button color = "primary" (click)="addVisitors()">
+    Add Visitors
+</button>
+</div>
 
 
     <table mat-table [dataSource]="dataSource" >
