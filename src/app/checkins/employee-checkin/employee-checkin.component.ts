@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog,MatSnackBar } from '@angular/material';
 import { DataService } from 'src/app/service/data.service';
-
-
+import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
 
 export interface PeriodicElement {
   id:number;
@@ -38,7 +38,9 @@ export class EmployeeCheckinComponent implements OnInit {
   checkOutDisable:boolean;
   
   constructor(
-    private dataservice:DataService
+    private dataservice:DataService,
+    private dialog:MatDialog,
+    private snackbar:MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -53,19 +55,58 @@ export class EmployeeCheckinComponent implements OnInit {
 
   checkIn(e){
     console.log('CHECKIN',e.name)
+
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '100vw !important',
+      data:{
+        title: "Checkin?",
+        message:`Check-In ${e.name}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if(result === true){
+        this.snackbar.open(`Checked in ${e.name}`, '',{
+          verticalPosition:'bottom',
+          duration:3000
+        })        
+      }else{
+        this.snackbar.open(`Cancelled`, '',{
+          verticalPosition:'bottom',
+          duration:3000
+        })   
+      }
+    })
+
   }
 
   checkOut(e){
-    console.log('CHECKooUT',e.name)
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data:{
+        title: "CheckOut?",
+        message:`Check-Out ${e.name}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if(result === true){
+        this.snackbar.open(`Checked Out ${e.name}`, '',{
+          verticalPosition:'bottom',
+          duration:3000
+        })        
+      }else{
+        this.snackbar.open(`Cancelled`, '',{
+          verticalPosition:'bottom',
+          duration:3000
+        })   
+      }
+    })
   }
 
-  getStaffLists(r){
+  getStaffLists($event){
     //dynamically set the data source to the table
     
-    console.log(r)
+    console.log($event)
 
-    this.dataservice.getStaffsByAgency(r.id).subscribe(res => {
-      console.log(res)
+    this.dataservice.getStaffsByAgency($event.value).subscribe(res => {
       this.dataSource = res.data
     })
 

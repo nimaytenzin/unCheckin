@@ -42,6 +42,11 @@ import { GatePassComponent } from './checkins/gate-pass/gate-pass.component';
 import { EmployeeCheckinComponent } from "./checkins/employee-checkin/employee-checkin.component";
 import { VehicleCheckinComponent } from "./checkins/vehicle-checkin/vehicle-checkin.component";
 import {VisitorsCheckinComponent  } from "./checkins/visitors-checkin/visitors-checkin.component";
+import { AddVisitorsComponent } from './checkins/add-visitors/add-visitors.component';
+import { VisitorsComponent } from './admin/visitors/visitors.component';
+import { EmployeesComponent } from './admin/employees/employees.component';
+import { VehiclesComponent } from './admin/vehicles/vehicles.component';
+import { AgenciesComponent } from './admin/agencies/agencies.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,12 @@ import {VisitorsCheckinComponent  } from "./checkins/visitors-checkin/visitors-c
     GatePassComponent,
     EmployeeCheckinComponent,
     VehicleCheckinComponent,
-    VisitorsCheckinComponent
+    VisitorsCheckinComponent,
+    AddVisitorsComponent,
+    VisitorsComponent,
+    EmployeesComponent,
+    VehiclesComponent,
+    AgenciesComponent
   ],
   imports: [
     BrowserModule,

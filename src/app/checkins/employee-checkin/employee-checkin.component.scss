@@ -12,6 +12,13 @@ h3{
     flex-direction: row;
 }
 
+.btn-cnt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .container button{
     display: inline-block;

@@ -8,6 +8,11 @@ import { VisitorsCheckinComponent } from './checkins/visitors-checkin/visitors-c
 import { EmployeeCheckinComponent } from './checkins/employee-checkin/employee-checkin.component';
 import { VehicleCheckinComponent } from './checkins/vehicle-checkin/vehicle-checkin.component';
 import { GatePassComponent } from './checkins/gate-pass/gate-pass.component';
+import { AddVisitorsComponent } from './checkins/add-visitors/add-visitors.component';
+import { AgenciesComponent } from './admin/agencies/agencies.component';
+import { VisitorsComponent } from './admin/visitors/visitors.component';
+import { EmployeesComponent } from './admin/employees/employees.component';
+import { VehiclesComponent } from './admin/vehicles/vehicles.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -18,11 +23,16 @@ const routes: Routes = [
       { path: 'visitors', component: VisitorsCheckinComponent },
       { path: 'vehicles', component: VehicleCheckinComponent },
       { path: 'gpass', component: GatePassComponent },
-
-
-
     ]},
-  { path:'admin',component:DashboardComponent},
+  { path:'admin',component:DashboardComponent,
+      children:[
+        { path: '', component:  DashboardComponent},
+        { path: 'agencies', component:  AgenciesComponent},
+        { path: 'visitors', component:  VisitorsComponent},
+        { path: 'employees', component:  EmployeesComponent},
+        { path: 'vehicles', component:  VehiclesComponent}
+      ]},
+  { path:'addVisitor',component:AddVisitorsComponent},
   {path: '**', component: ErrorComponent},
 
 ];

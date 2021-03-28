@@ -1,0 +1,65 @@
+
+
+<div style="display: flex; flex-direction: row; justify-content: center;margin:2px">
+    <div style="flex-direction: column; justify-content: center;margin-top: 1rem;">
+        <h2 style="text-align: center; padding-right: 20px;color: rgb(46,135,200);">Welcome to Gate Management System</h2>
+        <h2 style="text-align: center; padding-right: 20px;color: rgb(46,135,200);">Add New Visitor</h2>
+   
+    </div>
+    <img src="../../assets/un-logo.png" width="150px">
+</div>
+
+
+
+
+<div class="form-wraper" style="text-align:left" style="margin: 3px;">
+ 
+  <div class="form-wraper" style="text-align:center">
+    <div class="form-container card" >
+      <div class="form-body">
+            <!-- Start of Multi unit Form-->  
+            <form [formGroup]="addVisitorForm">
+
+                <mat-form-field class="justifier">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text"   formControlName="visitorName"   [readonly]="disableForm" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field class="justifier">
+                    <mat-label>CID/Work Permit</mat-label>
+                    <input matInput type="text"   formControlName="visitorCid"   [readonly]="disableForm" required autofocus>
+                </mat-form-field>
+
+                
+                <mat-form-field class="justifier">
+                    <mat-label>Contact No</mat-label>
+                    <input matInput type="text"   formControlName="visitorContact"   [readonly]="disableForm"  required autofocus>
+                </mat-form-field>
+
+                
+                <mat-form-field class="justifier">
+                    <mat-label>Address</mat-label>
+                    <input matInput type="text"   formControlName="visitorAddress"   [readonly]="disableForm" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field class="justifier">
+                    <mat-label>Working Agency</mat-label>
+                    <input matInput type="text"   formControlName="visitorAgency"   [readonly]="disableForm" required autofocus>
+                </mat-form-field>
+            </form>
+            <!-- End of Multi unit Form-->
+      </div>
+      <div class="form-footer">
+        <button mat-raised-button class="btn custom-btn" (click)="addAndCheckIn()" [disabled]="!addVisitorForm.valid">
+          <mat-icon>note_add</mat-icon> Add Visitor and check-in
+        </button>
+        <br>        
+        <button mat-raised-button class="btn custom-btn"(click)="goBack()" >
+            <mat-icon>note_add</mat-icon> Go Back
+          </button>
+    </div>
+    </div>
+  </div>
+
+
+  
