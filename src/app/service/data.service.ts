@@ -137,6 +137,21 @@ export class DataService {
     ) 
   }
 
+  postVehicle(item){
+    return this.http
+    .post<any>(`${this.API_URL}/car`,item,this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateVehicle(id,item){
+    return this.http
+    .put<any>(`${this.API_URL}/car/${id}`,item,this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   postNewVisitor(item){
     return this.http
@@ -146,9 +161,25 @@ export class DataService {
       );
   }
 
+  deleteVehicle(id){
+    return this.http
+    .delete<any>(`${this.API_URL}/car/${id}`,this.httpOptions).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   getAllVisitors(){
     return this.http
     .get<any>(`${this.API_URL}/visitor`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
+  getTodaysLog(){
+    return this.http
+    .get<any>(`${this.API_URL}/checkbydate`, this.httpOptions)
     .pipe(
       catchError(this.handleError)
     )

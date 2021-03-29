@@ -9,6 +9,7 @@ export class Employee{
   agency_id:number;
   role:string;
   cid:string;
+  status:string;
 
 }
 
@@ -76,7 +77,9 @@ export class EmployeeDialogComponent implements OnInit {
     this.employee.role = this.employeeForm.get('role').value;
     this.employee.agency_id = this.employeeForm.get('agency').value;
     this.employee.cid = this.employeeForm.get('cid').value
-
+    if(this.data.edit !== true){
+      this.employee.status = "checked-in"
+    }
     this.dialogRef.close([this.employee]);
   }
 

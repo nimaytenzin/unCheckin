@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
+import { DataService } from '../service/data.service';
 
 export interface PeriodicElement {
   name: string;
@@ -25,9 +26,14 @@ export class MainDashComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'agency','type', 'time'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  constructor() { }
+  constructor(
+    private dataservice:DataService
+  ) { }
 
   ngOnInit() {
+    this.dataservice.getTodaysLog().subscribe(res=>{
+      console.log(res)
+    })
   }
 
 }

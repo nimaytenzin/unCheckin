@@ -70,7 +70,8 @@ import { VehicleDialogComponent } from './dialogs/vehicle-dialog/vehicle-dialog.
     AgenciesComponent,
     AdminGatepassComponent,
     AgencyDialogComponent,
-    EmployeeDialogComponent
+    EmployeeDialogComponent,
+    VehicleDialogComponent
     ],
   imports: [
     BrowserModule,
