@@ -61,10 +61,47 @@ export class DataService {
     )
   }
 
+  postAgency(item){
+    return this.http
+    .post<any>(`${this.API_URL}/agency`,item,this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateAgncy(id,item){
+    return this.http
+    .put<any>(`${this.API_URL}/agency/${id}`,item,this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteAgency(id){
+    return this.http.delete<any>(`${this.API_URL}/agency/${id}`,this.httpOptions).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
+  //employee
+
   getStaffsByAgency(id){
     return this.http
     .get<any>(`${this.API_URL}/staff/${id}`, this.httpOptions)
     .pipe(
+      catchError(this.handleError)
+    )
+  }
+  addNewEmployee(item){
+    return this.http
+    .post<any>(`${this.API_URL}/staff`,item,this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteEmployee(id){
+    return this.http.delete<any>(`${this.API_URL}/staff/${id}`,this.httpOptions).pipe(
       catchError(this.handleError)
     )
   }
@@ -76,6 +113,13 @@ export class DataService {
       catchError(this.handleError)
     ) 
   }
+  updateEmployee(id,item){
+    return this.http
+    .put<any>(`${this.API_URL}/staff/${id}`,item,this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   getDrivers(){
     return this.http
@@ -93,12 +137,29 @@ export class DataService {
     ) 
   }
 
+
+  postNewVisitor(item){
+    return this.http
+      .post<any>(`${this.API_URL}/visitor`,item,this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   getAllVisitors(){
     return this.http
     .get<any>(`${this.API_URL}/visitor`, this.httpOptions)
     .pipe(
       catchError(this.handleError)
     )
+  }
+
+  logVisitor(item){
+    return this.http
+    .post<any>(`${this.API_URL}/check`,item,this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
 

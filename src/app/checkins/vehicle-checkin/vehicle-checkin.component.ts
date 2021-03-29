@@ -8,6 +8,12 @@ export interface Visitors {
   status:string;
 }
 
+
+export interface Checkin{
+  car_id:number;
+  type:string;
+}
+
 @Component({
   selector: 'app-vehicle-checkin',
   templateUrl: './vehicle-checkin.component.html',
@@ -21,7 +27,6 @@ export class VehicleCheckinComponent implements OnInit {
   driverLists:[]
   driver = new FormControl()
  
-
   checkInDisable:boolean;
   checkOutDisable:boolean;
   constructor(
@@ -121,7 +126,7 @@ export class VehicleCheckinComponent implements OnInit {
   }
 
   checkIndisable(element){
-    if(element.status === "check-in"){
+    if(element.status === "checked-in"){
       return true
     }else{
       return false

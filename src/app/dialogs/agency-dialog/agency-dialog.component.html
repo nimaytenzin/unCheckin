@@ -1,0 +1,18 @@
+<div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+    <h1 mat-dialog-title style="font-size: 1.5rem;text-align: center; ">{{data.title}}</h1>
+  <div mat-dialog-content style="font-size: 1rem; padding: 2rem;text-align: left;">
+    <form [formGroup]="agencyForm">
+
+        <mat-form-field class="justifier">
+            <mat-label>Agency Name</mat-label>
+            <input matInput type="text"   formControlName="name"   required autofocus>
+        </mat-form-field>
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions >
+    <button mat-flat-button    [ngStyle]="{'background-color':'rgb(140,198,93)', 'color':'white', 'padding-top':'1rem','padding-bottom':'1rem', 'float': 'left'}" value="Confirm" (click)="submit()" cdkFocusInitial style="font-size: 1rem;width: 30vh ">Submit</button>
+    <button mat-flat-button   [ngStyle]="{'background-color':'rgb(73,141,212)', 'color':'white','padding-top':'1rem','padding-bottom':'1rem','float': 'right'}" value="Cancel"  (click)="close()" style="font-size: 1rem;width: 30vh; float: right;">Close</button>
+  </div>
+  </div>

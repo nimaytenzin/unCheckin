@@ -28,15 +28,11 @@ import { MatListModule } from '@angular/material/list';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {WebcamModule} from 'ngx-webcam';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { HeaderComponent } from './shared/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AgencyTableComponent } from './agency-table/agency-table.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import { RequestsComponent } from './requests/requests.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
-import { AgencyDialogComponent } from './agency-dialog/agency-dialog.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { GatePassComponent } from './checkins/gate-pass/gate-pass.component';
 import { EmployeeCheckinComponent } from "./checkins/employee-checkin/employee-checkin.component";
@@ -47,6 +43,10 @@ import { VisitorsComponent } from './admin/visitors/visitors.component';
 import { EmployeesComponent } from './admin/employees/employees.component';
 import { VehiclesComponent } from './admin/vehicles/vehicles.component';
 import { AgenciesComponent } from './admin/agencies/agencies.component';
+import { AdminGatepassComponent } from './admin/admin-gatepass/admin-gatepass.component';
+import { AgencyDialogComponent } from './dialogs/agency-dialog/agency-dialog.component';
+import { EmployeeDialogComponent } from './dialogs/employee-dialog/employee-dialog.component';
+import { VehicleDialogComponent } from './dialogs/vehicle-dialog/vehicle-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,14 +54,10 @@ import { AgenciesComponent } from './admin/agencies/agencies.component';
     LoginComponent,
     ErrorComponent,
     ConfirmDialogComponent,
-    SidebarComponent,
-    HeaderComponent,
     DashboardComponent,
     AgencyTableComponent,
     UserTableComponent,
-    RequestsComponent,
     MainDashComponent,
-    AgencyDialogComponent,
     UserDashboardComponent,
     GatePassComponent,
     EmployeeCheckinComponent,
@@ -71,8 +67,11 @@ import { AgenciesComponent } from './admin/agencies/agencies.component';
     VisitorsComponent,
     EmployeesComponent,
     VehiclesComponent,
-    AgenciesComponent
-  ],
+    AgenciesComponent,
+    AdminGatepassComponent,
+    AgencyDialogComponent,
+    EmployeeDialogComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -107,6 +106,6 @@ import { AgenciesComponent } from './admin/agencies/agencies.component';
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [ ConfirmDialogComponent]
+  entryComponents: [ ConfirmDialogComponent,AgencyDialogComponent,EmployeeDialogComponent,VehicleDialogComponent],
 })
 export class AppModule { }

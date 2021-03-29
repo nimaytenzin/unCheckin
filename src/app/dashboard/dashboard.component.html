@@ -1,24 +1,48 @@
 
-  <div style="display: flex; flex-direction: row; justify-content: center;margin:2px">
-      <h2 style="text-align: center; padding-right: 20px;color: rgb(46,135,200);">Welcome to Gate Management System</h2>
-      <img src="../../assets/un-logo.png" width="150px">
-  </div>
-  
 
-  do
+<mat-drawer-container>
+  <mat-drawer mode="side" opened>
+    <div class="side-nav-header">
+      <div style="flex-direction: column; justify-content: center;margin-top: 1rem;">
+        <h2>Welcome to Gate Management System</h2>
+      </div>  
+    </div>
 
-  <mat-tab-group   mat-align-tabs="center">
-      <mat-tab label="Dashboard" style="font-size: 2rem;">
-            <app-main-dash></app-main-dash>
-      </mat-tab>
-      <mat-tab label="Manage Agencies"> 
-        <app-agency-table></app-agency-table>
-    </mat-tab>
-      <mat-tab label="Manage Users"> 
-         <app-user-table></app-user-table>
-      </mat-tab>
+    <div class="side-nav">
+      <button [routerLink]="['admin']">
+        Main Dashboard
+      </button>
+      <button [routerLink]="['agencies']">
+        Manage Agencies
+      </button>
+      <button [routerLink]="['employees']">
+        Manage Employees
+      </button>
+      <button [routerLink]="['vehicles']">
+        Manage Vehicles
+      </button>
+      <button [routerLink]="['gatepass']">
+        Gate Pass
+      </button>
 
-      <mat-tab label="Process Requests"> 
-         <app-requests></app-requests>
-    </mat-tab>
-  </mat-tab-group>
+    </div>
+
+
+    <div class="bottom-nav">
+      <button>
+        Log Out
+      </button>
+    </div>
+  </mat-drawer>
+
+
+  <mat-drawer-content>
+    <div style="display: flex; flex-direction: row; justify-content: center;margin:2px">
+      <div style="flex-direction: column; justify-content: center;margin-top: 1rem;">
+          <h2 style="text-align: center; padding-right: 20px;color: rgb(46,135,200);">Gate Management System</h2>
+      </div>
+      <img src="../../assets/un-logo.png" width="100px">
+    </div>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

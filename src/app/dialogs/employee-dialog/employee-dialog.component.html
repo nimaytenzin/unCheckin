@@ -1,0 +1,49 @@
+<div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+    <h1 mat-dialog-title style="font-size: 1.5rem;text-align: center; ">{{data.title}}</h1>
+  <div mat-dialog-content style="font-size: 1rem; padding: 2rem;text-align: left;">
+    
+    <form [formGroup]="employeeForm">
+        <mat-form-field class="justifier">
+            <mat-label> Name</mat-label>
+            <input matInput type="text"   formControlName="name"   required autofocus>
+        </mat-form-field>
+
+        <mat-form-field class="justifier">
+            <mat-label> CID/EID</mat-label>
+            <input matInput type="text"   formControlName="cid"   required autofocus>
+        </mat-form-field>
+
+
+        <mat-form-field class="justifier">
+            <mat-label> Contact</mat-label>
+            <input matInput type="text"   formControlName="contact"   required autofocus>
+        </mat-form-field>
+
+        
+
+        <mat-form-field appearance="fill">
+            <mat-label>Select Agency</mat-label>
+            <mat-select formControlName="agency">
+              <mat-option *ngFor="let option of agencyLists" [value]="option.id" >
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> 
+
+          <mat-form-field appearance="fill">
+            <mat-label>Select role</mat-label>
+            <mat-select formControlName="role"  >
+              <mat-option *ngFor="let option of roles" [value]="option.name" >
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> 
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions >
+    <button mat-flat-button    [ngStyle]="{'background-color':'rgb(140,198,93)', 'color':'white', 'padding-top':'1rem','padding-bottom':'1rem', 'float': 'left'}" value="Confirm" (click)="submit()" cdkFocusInitial style="font-size: 1rem;width: 30vh ">Submit</button>
+    <button mat-flat-button   [ngStyle]="{'background-color':'rgb(73,141,212)', 'color':'white','padding-top':'1rem','padding-bottom':'1rem','float': 'right'}" value="Cancel"  (click)="close()" style="font-size: 1rem;width: 30vh; float: right;">Close</button>
+  </div>
+  </div>

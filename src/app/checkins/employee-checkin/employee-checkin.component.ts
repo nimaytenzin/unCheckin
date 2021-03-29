@@ -13,6 +13,11 @@ export interface PeriodicElement {
   updated_at:string
 }
 
+export interface Checkin{
+  staff_id:number;
+  type:string;
+}
+
 
 
 // const ELEMENT_DATA: PeriodicElement[] = [
@@ -48,9 +53,6 @@ export class EmployeeCheckinComponent implements OnInit {
       this.agencyLists=res.data;
       console.log('agency Lists', this.agencyLists)
     })
-
-   
-
   }
 
   checkIn(e){
@@ -114,7 +116,7 @@ export class EmployeeCheckinComponent implements OnInit {
   }
 
   checkIndisable(element){
-    if(element.status === "check-in"){
+    if(element.status === "checked-in"){
       return true
     }else{
       return false

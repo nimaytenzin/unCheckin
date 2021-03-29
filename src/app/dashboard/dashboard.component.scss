@@ -1,41 +1,52 @@
-table {
-    width: 100%;
-    overflow: auto;
-  max-height: 500px;
-  }
-  .mat-icon {
-    font-size: 50px;
-  }
-  mat-option{
-    font-size: xx-large;
-  }
-  ::ng-deep .mat-tab-label .mat-tab-label-content {
-    font-size: x-large;
-  }
+mat-drawer-container{
+  height:100%
+}
 
-  h2{
-    color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 50px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
-  }
-  
-  #date{
-  color:silver;
-  padding: 0;
-  margin: 0;
-  font-size:1.5rem;
-  margin-bottom: 1rem;
-  margin-top: 0.8rem;
-  
-  
-  }
-  
-  #time{
-  font-size:2rem;
-  padding: 0;
-  margin: 0;
-  color:silver;
-  }
-  
-  mat-table {
-  overflow: auto;
-  max-height: 500px;
-  }
+mat-drawer{
+  width: 20%;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+}
+
+.side-nav{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.side-nav button{
+  height: 2.5rem;
+  border: none;
+  background-image: none;
+}
+
+.side-nav-header{
+  color: white;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-nav-header h1{
+  text-align: center;
+  font-weight: 400;
+}
+
+.side-nav-header image{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-nav-header img{
+  margin-top: 1rem;
+}
+
+.bottom-nav{
+  position: absolute;
+  bottom: 0;
+}
