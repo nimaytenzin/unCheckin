@@ -52,6 +52,32 @@ export class DataService {
       );
   }
 
+
+  //Counts
+  getAgencyCount(){
+    return this.http
+    .get<any>(`${this.API_URL}/agencycount`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getEmployeeCount(){
+    return this.http
+    .get<any>(`${this.API_URL}/staffcount`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getTodaysMovement(){
+    return this.http
+    .get<any>(`${this.API_URL}/checkcount`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    ) 
+  }
+
   //get agency lists
   getAllAgency(){
     return this.http
@@ -177,13 +203,25 @@ export class DataService {
   }
 
 
-  getTodaysLog(){
+  logEmployee(item){
     return this.http
-    .get<any>(`${this.API_URL}/checkbydate`, this.httpOptions)
+    .post<any>(`${this.API_URL}/check`,item,this.httpOptions)
     .pipe(
       catchError(this.handleError)
-    )
+    );
   }
+
+
+  logVehicle(item){
+    return this.http
+    .post<any>(`${this.API_URL}/check`,item,this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+
 
   logVisitor(item){
     return this.http
@@ -192,6 +230,33 @@ export class DataService {
       catchError(this.handleError)
     );
   }
+
+
+  //Movement Logs
+  getVisitorsLogToday(){
+    return this.http
+    .get<any>(`${this.API_URL}/checkvisitors`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getEmployeesLogToday(){
+    return this.http
+    .get<any>(`${this.API_URL}/checkstaffs`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getVehiclesLogToday(){
+    return this.http
+    .get<any>(`${this.API_URL}/checkcars`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+  
 
 
 

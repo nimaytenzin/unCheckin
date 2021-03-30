@@ -23,7 +23,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./main-dash.component.scss']
 })
 export class MainDashComponent implements OnInit {
-
+  agencyCount =0;
+  employeeCount = 0;
+  todaysLog =0;
   displayedColumns: string[] = ['position', 'name', 'agency','type', 'time'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   constructor(
@@ -31,9 +33,28 @@ export class MainDashComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataservice.getTodaysLog().subscribe(res=>{
+
+    this.dataservice.getEmployeesLogToday().subscribe(res => {
       console.log(res)
     })
+
+    this.dataservice.getAgencyCount().subscribe(res => {
+      this.agencyCount = res
+    })
+
+    this.dataservice.getEmployeeCount().subscribe(res => {
+      this.employeeCount = res
+    })
+    this.dataservice.getTodaysMovement().subscribe(res => {
+      this.todaysLog = res
+    })
+
+    setInterval(() =>{ 
+      this.dataservice.getTodaysMovement().subscribe(res => {
+        this.todaysLog = res
+        
+      })
+     }, 6000);
   }
 
 }

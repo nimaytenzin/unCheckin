@@ -13,6 +13,12 @@ export interface PeriodicElement {
   updated_at:string
 }
 
+export class EmployeeCheckin {
+  staff_id: number;
+  type:string;
+  time: string;
+}
+
 export interface Checkin{
   staff_id:number;
   type:string;
@@ -34,7 +40,7 @@ export interface Checkin{
   styleUrls: ['./employee-checkin.component.scss']
 })
 export class EmployeeCheckinComponent implements OnInit {
-
+  employee= new EmployeeCheckin
   displayedColumns: string[] = ['index', 'name', 'role','action'];
   dataSource:[]
   agencyLists:[]
@@ -51,13 +57,29 @@ export class EmployeeCheckinComponent implements OnInit {
   ngOnInit() {
     this.dataservice.getAllAgency().subscribe(res=>{
       this.agencyLists=res.data;
-      console.log('agency Lists', this.agencyLists)
     })
   }
 
-  checkIn(e){
-    console.log('CHECKIN',e.name)
+  clock(){
 
+    let dates;
+    let d = new Date();
+    let date = d.getDate();
+    let month = d.getMonth() +1;
+    let year = d.getFullYear();
+    var day = d.getDay();
+    let hour =d.getHours();
+    let min = d.getMinutes();
+    let sec = d.getSeconds();
+    dates = year+'-'+month+'-'+date+' ' + hour+':'+min+':'+sec
+    return dates
+}
+
+
+  checkIn(e){
+    this.employee.staff_id = e.id;
+    this.employee.time = this.clock();
+    this.employee.type = "checked-in"
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '100vw !important',
       data:{
@@ -67,9 +89,13 @@ export class EmployeeCheckinComponent implements OnInit {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if(result === true){
-        this.snackbar.open(`Checked in ${e.name}`, '',{
-          verticalPosition:'bottom',
-          duration:3000
+        this.dataservice.logEmployee(this.employee).subscribe(res =>{
+          this.refreshData(e.agency_id)
+
+          this.snackbar.open(`Checked In ${e.name}`, '',{
+            verticalPosition:'bottom',
+            duration:3000
+          }) 
         })        
       }else{
         this.snackbar.open(`Cancelled`, '',{
@@ -82,6 +108,11 @@ export class EmployeeCheckinComponent implements OnInit {
   }
 
   checkOut(e){
+    console.log(e)
+    this.employee.staff_id = e.id;
+    this.employee.time = this.clock();
+    this.employee.type = "checked-out";
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data:{
         title: "CheckOut?",
@@ -90,10 +121,13 @@ export class EmployeeCheckinComponent implements OnInit {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if(result === true){
-        this.snackbar.open(`Checked Out ${e.name}`, '',{
-          verticalPosition:'bottom',
-          duration:3000
-        })        
+        this.dataservice.logEmployee(this.employee).subscribe(res =>{
+          this.refreshData(e.agency_id)
+          this.snackbar.open(`Checked Out ${e.name}`, '',{
+            verticalPosition:'bottom',
+            duration:3000
+          }) 
+        })              
       }else{
         this.snackbar.open(`Cancelled`, '',{
           verticalPosition:'bottom',
@@ -121,6 +155,12 @@ export class EmployeeCheckinComponent implements OnInit {
     }else{
       return false
     }
+  }
+
+  refreshData(e){
+    this.dataservice.getStaffsByAgency(e).subscribe(res=>{
+      this.dataSource=res.data;
+    })
   }
 
 

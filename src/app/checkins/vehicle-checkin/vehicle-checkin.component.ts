@@ -3,9 +3,13 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { DataService } from 'src/app/service/data.service';
 import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
-export interface Visitors {
-  carNumber: string;
-  status:string;
+
+
+export class Vehicle {
+  car_id: number;
+  staff_id:number;
+  type:string;
+  time: string;
 }
 
 
@@ -26,7 +30,8 @@ export class VehicleCheckinComponent implements OnInit {
   agencyLists:[]
   driverLists:[]
   driver = new FormControl()
- 
+  vehicle = new Vehicle
+
   checkInDisable:boolean;
   checkOutDisable:boolean;
   constructor(
@@ -40,10 +45,10 @@ export class VehicleCheckinComponent implements OnInit {
     this.reactiveForm()
     this.dataservice.getCars().subscribe(res => {
       this.dataSource = res.data
+      console.log(res.data)
     })
     this.dataservice.getDrivers().subscribe(res => {
       this.driverLists = res.data
-
     })
 
   }
@@ -54,28 +59,52 @@ export class VehicleCheckinComponent implements OnInit {
     });    
   }
 
-  checkIn(e){
+     
+  clock(){
 
+    let dates;
+    let d = new Date();
+    let date = d.getDate();
+    let month = d.getMonth() +1;
+    let year = d.getFullYear();
+    var day = d.getDay();
+    let hour =d.getHours();
+    let min = d.getMinutes();
+    let sec = d.getSeconds();
+    dates = year+'-'+month+'-'+date+' ' + hour+':'+min+':'+sec
+    return dates
+}
+
+  checkIn(e){
     if(this.selectDriverForm.get('selectedDriver').value === null){
       this.snackbar.open(`Please Select Driver`, '',{
         verticalPosition:'bottom',
         duration:3000
       })  
     }else{
-      let driverName = this.selectDriverForm.get('selectedDriver').value
+      let driverId = this.selectDriverForm.get('selectedDriver').value
+      this.vehicle.car_id = e.id,
+      this.vehicle.staff_id = driverId,
+      this.vehicle.time = this.clock();
+      this.vehicle.type = "checked-in"
+
       const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
         data:{
           title: "CheckIn?",
-          message:`Check-In ${e.vnumber}, Driver: ${driverName}?`
+          message:`Check-In ${e.vnumber}?`
         }
       });
       confirmDialog.afterClosed().subscribe(result => {
-        if(result === true){
-          this.snackbar.open(`Checked In ${e.vnumber}, driver: ${driverName}`, '',{
-            verticalPosition:'bottom',
-            duration:3000
+        if(result === true){  
+          this.dataservice.logVehicle(this.vehicle).subscribe(res => {
+            this.snackbar.open(`Checked In ${e.vnumber} `, '',{
+              verticalPosition:'bottom',
+              duration:3000
+            })
+            this.selectDriverForm.patchValue( {'selectedDriver':null} );  
+            this.refreshData()
           })
-          this.selectDriverForm.patchValue( {'selectedDriver':null} );      
+            
         }else{
           this.snackbar.open(`Cancelled`, '',{
             verticalPosition:'bottom',
@@ -96,20 +125,30 @@ export class VehicleCheckinComponent implements OnInit {
         duration:3000
       })  
     }else{
-      let driverName = this.selectDriverForm.get('selectedDriver').value
+      let driverId = this.selectDriverForm.get('selectedDriver').value
+      this.vehicle.car_id = e.id,
+      this.vehicle.staff_id = driverId,
+      this.vehicle.time = this.clock();
+      this.vehicle.type = "checked-out"
+     
+      
       const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
         data:{
           title: "CheckOut?",
-          message:`Check-Out ${e.vnumber}, Driver: ${driverName}?`
+          message:`Check-Out ${e.vnumber} ?`
         }
       });
       confirmDialog.afterClosed().subscribe(result => {
         if(result === true){
-          this.snackbar.open(`Checked Out ${e.vnumber}, driver: ${driverName}`, '',{
-            verticalPosition:'bottom',
-            duration:3000
+          this.dataservice.logVehicle(this.vehicle).subscribe(res => {
+            this.snackbar.open(`Checked Out ${e.vnumber} `, '',{
+              verticalPosition:'bottom',
+              duration:3000
+            })
+            this.selectDriverForm.patchValue( {'selectedDriver':null} );   
+            this.refreshData()
+
           })
-          this.selectDriverForm.patchValue( {'selectedDriver':null} );      
         }else{
           this.snackbar.open(`Cancelled`, '',{
             verticalPosition:'bottom',
@@ -121,9 +160,12 @@ export class VehicleCheckinComponent implements OnInit {
     }
   }
 
-  getStaffLists(r){
-    //dynamically set the data source to the table
-  }
+ refreshData(){
+  this.dataservice.getCars().subscribe(res => {
+    this.dataSource = res.data
+    console.log('Refreshed')
+  })
+ }
 
   checkIndisable(element){
     if(element.status === "checked-in"){

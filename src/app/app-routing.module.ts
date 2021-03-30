@@ -15,6 +15,10 @@ import { EmployeesComponent } from './admin/employees/employees.component';
 import { VehiclesComponent } from './admin/vehicles/vehicles.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import { AdminGatepassComponent } from './admin/admin-gatepass/admin-gatepass.component';
+import { EmployeeLogTableComponent } from './table/employee-log-table/employee-log-table.component';
+import { VisitorLogTableComponent } from './table/visitor-log-table/visitor-log-table.component';
+import { VehicleLogTableComponent } from './table/vehicle-log-table/vehicle-log-table.component';
+import { RequestVisitorsComponent } from './admin/request-visitors/request-visitors.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,11 +32,18 @@ const routes: Routes = [
     ]},
   { path:'admin',component:DashboardComponent,
       children:[
-        { path: 'admin', component:  MainDashComponent},
+        { path: 'admin', component:  MainDashComponent, 
+            children:[
+              { path: 'employee-table', component:  EmployeeLogTableComponent},
+              { path: 'visitor-table', component:  VisitorLogTableComponent},
+              { path: 'vehicle-table', component:  VehicleLogTableComponent},
+
+            ]},
         { path: 'agencies', component:  AgenciesComponent},
         { path: 'visitors', component:  VisitorsComponent},
         { path: 'employees', component:  EmployeesComponent},
         { path: 'vehicles', component:  VehiclesComponent},
+        { path: 'request-visitors', component:  RequestVisitorsComponent},
         { path: 'gatepass', component:  AdminGatepassComponent}
       ]},
   { path:'addVisitor',component:AddVisitorsComponent},

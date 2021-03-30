@@ -5,7 +5,7 @@
           <mat-card-title>Employees Registered</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <h1>785</h1>
+            <h1>{{employeeCount}}</h1>
         </mat-card-content>
        
       </mat-card>
@@ -17,7 +17,7 @@
         </mat-card-header>
         <mat-card-content>
             <h1>
-                4
+                {{agencyCount}}
             </h1>
         </mat-card-content>
        
@@ -27,10 +27,9 @@
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>Movements Today</mat-card-title>
-          <mat-card-subtitle>March 17, 2021</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <h1>5688</h1>
+          <h1>{{todaysLog}}</h1>
         </mat-card-content>
       </mat-card>
 </div>
@@ -38,32 +37,15 @@
 
 
 <h2 style="text-align: center;">Todays Movement Logs</h2>
-<table mat-table [dataSource]="dataSource"  style="width: 100%;" >
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="agency">
-      <th mat-header-cell *matHeaderCellDef> Agency </th>
-      <td mat-cell *matCellDef="let element"> {{element.agency}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-      </ng-container>
-  
-    <ng-container matColumnDef="time">
-      <th mat-header-cell *matHeaderCellDef> Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+
+<div class="container">
+  <button mat-flat-button [routerLink]="['employee-table']" routerLinkActive="active">Employee's Log</button>
+  <button mat-flat-button [routerLink]="['visitor-table']" routerLinkActive="active"> Visitors Log</button>
+  <button mat-flat-button [routerLink]="['vehicle-table']"routerLinkActive="active" > Vehicle's Log</button>
+</div>
+
+<div>
+  <router-outlet>
+  </router-outlet>
+</div>
+

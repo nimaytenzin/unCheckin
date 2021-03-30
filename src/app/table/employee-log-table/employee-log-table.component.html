@@ -1,0 +1,46 @@
+<table mat-table [dataSource]="dataSource"  style="width: 100%;" >
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.staff.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="agency">
+      <th mat-header-cell *matHeaderCellDef> Agency </th>
+      <td mat-cell *matCellDef="let element"> {{element.staff.agency.name}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+  
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-toolbar >
+    <span style="margin-left: 20%" class="responsive-view margin-for-mobile">
+      <button   (click)="getFirstPage()">
+        <i class="material-icons">first_page</i>
+      </button>
+      <button   (click)="getPreviousPage()">
+        <i class="material-icons">chevron_left</i>
+      </button>
+      <button   (click)="getNextPage()">
+        <i class="material-icons">chevron_right</i>
+      </button>
+      <button matTooltip="Info about the action"  (click)="getLastPage()">
+        <i class="material-icons">last_page</i>
+      </button>
+    </span>
+  </mat-toolbar>

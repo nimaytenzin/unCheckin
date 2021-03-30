@@ -29,8 +29,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import {WebcamModule} from 'ngx-webcam';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AgencyTableComponent } from './agency-table/agency-table.component';
-import { UserTableComponent } from './user-table/user-table.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -47,6 +45,10 @@ import { AdminGatepassComponent } from './admin/admin-gatepass/admin-gatepass.co
 import { AgencyDialogComponent } from './dialogs/agency-dialog/agency-dialog.component';
 import { EmployeeDialogComponent } from './dialogs/employee-dialog/employee-dialog.component';
 import { VehicleDialogComponent } from './dialogs/vehicle-dialog/vehicle-dialog.component';
+import { EmployeeLogTableComponent } from './table/employee-log-table/employee-log-table.component';
+import { VisitorLogTableComponent } from './table/visitor-log-table/visitor-log-table.component';
+import { VehicleLogTableComponent } from './table/vehicle-log-table/vehicle-log-table.component';
+import { RequestVisitorsComponent } from './admin/request-visitors/request-visitors.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +57,6 @@ import { VehicleDialogComponent } from './dialogs/vehicle-dialog/vehicle-dialog.
     ErrorComponent,
     ConfirmDialogComponent,
     DashboardComponent,
-    AgencyTableComponent,
-    UserTableComponent,
     MainDashComponent,
     UserDashboardComponent,
     GatePassComponent,
@@ -71,7 +71,11 @@ import { VehicleDialogComponent } from './dialogs/vehicle-dialog/vehicle-dialog.
     AdminGatepassComponent,
     AgencyDialogComponent,
     EmployeeDialogComponent,
-    VehicleDialogComponent
+    VehicleDialogComponent,
+    EmployeeLogTableComponent,
+    VisitorLogTableComponent,
+    VehicleLogTableComponent,
+    RequestVisitorsComponent,
     ],
   imports: [
     BrowserModule,
