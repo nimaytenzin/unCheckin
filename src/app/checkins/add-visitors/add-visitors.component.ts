@@ -16,6 +16,12 @@ export class Visitor{
   status:string;
 }
 
+export class CheckInVisitor {
+  visitor_id: number;
+  type:string;
+  time: string;
+}
+
 @Component({
   selector: 'app-add-visitors',
   templateUrl: './add-visitors.component.html',
@@ -24,6 +30,7 @@ export class Visitor{
 export class AddVisitorsComponent implements OnInit {
   addVisitorForm:FormGroup;
   visitor= new Visitor;
+  checkInVisitor = new CheckInVisitor
   constructor(
     public dialog: MatDialog,
     private fb:FormBuilder,
@@ -75,7 +82,7 @@ export class AddVisitorsComponent implements OnInit {
     this.visitor.agency = this.addVisitorForm.get('visitorAgency').value
     this.visitor.staff_id = 1;
     this.visitor.arrivaltime = this.clock();
-    this.visitor.status = 'checked-in';
+    this.visitor.status = 'checked-out';
 
     console.log(this.visitor)
 
@@ -88,9 +95,16 @@ export class AddVisitorsComponent implements OnInit {
     confirmDialog.afterClosed().subscribe(result => {
       if(result === true){
         this.dataService.postNewVisitor(this.visitor).subscribe(res =>{
-          this.snackBar.open(`Checked In ${this.visitor.name}`, '',{
-            verticalPosition:'bottom',
-            duration:3000
+          //add check in route here
+          console.log(res, 'response of post new visitor')
+          this.checkInVisitor.visitor_id = res.id;
+          this.checkInVisitor.type = "checked-in";
+          this.checkInVisitor.time = this.clock();
+          this.dataService.logVisitor(this.checkInVisitor).subscribe(res => {    
+                this.snackBar.open(`Checked In ${this.visitor.name}`, '',{
+                  verticalPosition:'bottom',
+                  duration:3000
+              })
           }) 
           this.router.navigate(['user-dash/visitors'])
         })

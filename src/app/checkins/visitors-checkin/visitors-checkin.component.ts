@@ -37,6 +37,7 @@ export class VisitorsCheckinComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.refreshData()
     this.dataservice.getAllVisitors().subscribe(res=>{
       this.dataSource = res.data
       console.log(res.data)

@@ -64,14 +64,14 @@ export class LoginComponent implements OnInit {
       // });
 
       if(loginId === "user"){
-        this.router.navigate(['checkin']);
+        this.router.navigate(['user-dash/employee']);
         this.snackBar.open('Welcome to Gate Managemnt System', '', {
                 duration: 5000,
                 verticalPosition: 'bottom',
                 panelClass: ['success-snackbar']
         });
       }else if(loginId === "admin"){
-        this.router.navigate(['admin']);
+        this.router.navigate(['admin/admin']);
         this.snackBar.open('Welcome to Gate Managemnt System', '', {
                 duration: 5000,
                 verticalPosition: 'bottom',

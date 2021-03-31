@@ -1,1 +1,47 @@
-<p>admin-gatepass works!</p>
+<div class="formf">
+    <br>
+    <form [formGroup]="requestVisitorForm">
+        <div style="display: flex; flex-direction: row;justify-content: space-between;">
+          <h4>Requesting Staff Details</h4>
+              <mat-form-field appearance="fill" style="width: 30%;">
+                  <mat-label>Select Agency</mat-label>
+                  <mat-select  (selectionChange)="getStaff($event)"  formControlName="requestAgency" required [readonly]="disableForm">
+                  <mat-option *ngFor="let option of agencyLists" [value]="option.id" >
+                      {{option.name}}
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field> 
+    
+    
+              <mat-form-field appearance="fill" style="width: 40%;">
+              <mat-label>Select Staff</mat-label>
+              <mat-select   formControlName="requestEmployee">
+                  <mat-option *ngFor="let option of staffLists" [value]="option.id" required [readonly]="disableForm">
+                  {{option.name}}
+                  </mat-option>
+              </mat-select>
+              </mat-form-field> 
+        </div>
+    
+        <mat-form-field class="justifier">
+            <mat-label>Agency Issued to</mat-label>
+            <input matInput type="text"   formControlName="agencyIssuedTo"   [readonly]="disableForm" required autofocus>
+        </mat-form-field>
+    
+        <mat-form-field class="justifier">
+            <mat-label>Purpose</mat-label>
+            <input matInput type="text"   formControlName="purpose"   [readonly]="disableForm" required autofocus>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Select Issue Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="issueDate"   [readonly]="disableForm" required >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </form>
+    
+    <button mat-raised-button class="btn custom-btn" (click)="requestVisitor()" [disabled]="!requestVisitorForm.valid" >
+        <mat-icon>note_add</mat-icon> Add Gate Pass Request
+    </button>
+</div>
