@@ -75,7 +75,7 @@ export class ReviewGpassComponent implements OnInit {
 
 
   verifyDisabled(e){
-    if(e.returnable === 0 || e.status === "returned"){
+    if(e.returnable === 0 || e.status === "returned" || e.returnable === false){
       return true
     }else{
       return false

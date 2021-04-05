@@ -9,8 +9,8 @@ export const environment = {
   // API_URL: 'http://localhost:8000'
   // API_URL: 'https://zhichar.myddns.rocks/api',
   // API_URL : 'https://zhichar.ddnsfree.com/gpass/'
-  // API_URL: 'https://unepassapi.herokuapp.com/api'
-  API_URL:'http://192.168.6.201:8080/api'
+  API_URL: 'https://unepassapi.herokuapp.com/api'
+  // API_URL:'http://192.168.6.201:8080/api'
 };
 
 /*

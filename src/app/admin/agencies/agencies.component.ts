@@ -97,7 +97,7 @@ export class AgenciesComponent implements OnInit {
     confirmDialog.afterClosed().subscribe(result => {
       if(result !== null){
         this.dataservice.postAgency(result[0]).subscribe(res => {
-          this.snackbar.open(`Checked Out `, '',{
+          this.snackbar.open(`Added `, '',{
             verticalPosition:'bottom',
             duration:3000
           }) 

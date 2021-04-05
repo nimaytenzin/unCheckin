@@ -68,7 +68,6 @@ export class EmployeeDialogComponent implements OnInit {
   }
 
   getAgencyName(id){
-   console.log('asdsd',this.agencyLists)
   }
 
   submit(){
@@ -78,7 +77,7 @@ export class EmployeeDialogComponent implements OnInit {
     this.employee.agency_id = this.employeeForm.get('agency').value;
     this.employee.cid = this.employeeForm.get('cid').value
     if(this.data.edit !== true){
-      this.employee.status = "checked-in"
+      this.employee.status = "checked-out"
     }
     this.dialogRef.close([this.employee]);
   }

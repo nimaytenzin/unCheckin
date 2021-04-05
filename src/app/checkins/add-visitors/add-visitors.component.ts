@@ -83,7 +83,6 @@ export class AddVisitorsComponent implements OnInit {
     this.visitor.arrivaltime = this.clock();
     this.visitor.status = 'checked-out';
 
-
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {  
       data:{
         title: "Add Visitor?",

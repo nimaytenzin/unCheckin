@@ -117,7 +117,8 @@ export class EmployeesComponent implements OnInit {
           this.snackbar.open(`Checked Out ${e.name}`, '',{
             verticalPosition:'bottom',
             duration:3000
-          })             
+          }) 
+          this.refreshData(id)            
         }else{
           this.snackbar.open(`Cancelled`, '',{
             verticalPosition:'bottom',

@@ -4,19 +4,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { DataService } from '../../service/data.service';
 import { HttpClient } from '@angular/common/http';
 
-export interface PeriodicElement {
-  name: string;
-  agency: string;
-  time: string;
-  type:string;
-}
-let  t = new Date().getDate().toString()
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Hem Bdr', agency: "UNDP", time: t, type:"CheckIn"},
-  { name: 'Nima', agency: "UNDP", time: t, type:"CheckIn"}
-
-];
 
 @Component({
   selector: 'app-employee-log-table',
@@ -28,7 +16,8 @@ export class EmployeeLogTableComponent implements OnInit {
   employeeCount = 0;
   todaysLog =0;
   displayedColumns: string[] = ['position', 'name', 'agency','type', 'time'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  
+  dataSource;
   constructor(
     private dataservice:DataService,
     private http: HttpClient
@@ -45,7 +34,6 @@ export class EmployeeLogTableComponent implements OnInit {
  
     this.dataservice.getEmployeesLogToday().subscribe(res => {
       this.http.get(`${res.first_page_url}`).subscribe(resp =>{
-        console.log(resp)
         this.dataSource = resp.data
       })
      
@@ -68,6 +56,8 @@ export class EmployeeLogTableComponent implements OnInit {
       this.http.get(`${res.next_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
+
+
       })
      
     })
