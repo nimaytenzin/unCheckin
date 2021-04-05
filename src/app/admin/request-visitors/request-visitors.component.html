@@ -2,7 +2,7 @@
     <br>
     <form [formGroup]="requestVisitorForm">
         <div style="display: flex; flex-direction: row;justify-content: space-between;">
-          <h4>Staff Details</h4>
+          <h4> Requesting Staff Details</h4>
               <mat-form-field appearance="fill" style="width: 30%;">
                   <mat-label>Select Agency</mat-label>
                   <mat-select  (selectionChange)="getStaff($event)"  formControlName="requestAgency" required [readonly]="disableForm">
@@ -36,7 +36,7 @@
         
         <mat-form-field class="justifier">
             <mat-label>Contact No</mat-label>
-            <input matInput type="text"   formControlName="visitorContact"   [readonly]="disableForm"  required autofocus>
+            <input matInput type="number"   formControlName="visitorContact"   [readonly]="disableForm"  required autofocus>
         </mat-form-field>
     
         

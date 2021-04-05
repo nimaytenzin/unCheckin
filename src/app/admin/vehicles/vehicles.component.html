@@ -1,7 +1,11 @@
 <div class="visitors-table">
-    <div>
-        <button mat-button (click)="addVehicle()">Add New Vehicle</button>
-    </div>
+  
+    <div style="float: right;"  (click)="addVehicle()">
+      <button mat-mini-fab color="primary" >
+        <mat-icon>plus_one</mat-icon>
+      </button>
+      Add New Vehicle
+  </div>
 
     <table mat-table [dataSource]="dataSource" >
         <ng-container matColumnDef="index">

@@ -2,14 +2,17 @@
     
   <div style="display: flex;flex-direction: column;justify-content: center;align-items:center;">
     <h3>Employees</h3>
+   <form [formGroup]="selectAgencyForm">
+
     <mat-form-field appearance="fill">
       <mat-label>Select Agency</mat-label>
-      <mat-select  (selectionChange)="getStaffLists($event)">
+      <mat-select  (selectionChange)="getStaffLists($event)"   formControlName="agency">
         <mat-option *ngFor="let option of agencyLists" [value]="option.id" >
           {{option.name}}
         </mat-option>
       </mat-select>
     </mat-form-field> 
+   </form>
   </div>
 
   

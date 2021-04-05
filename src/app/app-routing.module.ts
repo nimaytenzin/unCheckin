@@ -19,6 +19,7 @@ import { EmployeeLogTableComponent } from './table/employee-log-table/employee-l
 import { VisitorLogTableComponent } from './table/visitor-log-table/visitor-log-table.component';
 import { VehicleLogTableComponent } from './table/vehicle-log-table/vehicle-log-table.component';
 import { RequestVisitorsComponent } from './admin/request-visitors/request-visitors.component';
+import { RouteGuard } from './service/route.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},

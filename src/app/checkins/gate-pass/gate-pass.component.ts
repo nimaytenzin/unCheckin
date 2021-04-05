@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-gate-pass',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GatePassComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dataservice:DataService
+  ) { }
 
   ngOnInit() {
   }

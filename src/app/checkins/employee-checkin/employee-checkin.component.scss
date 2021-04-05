@@ -7,9 +7,8 @@ h3{
 }
 
 
-.container{
-    display: flex;
-    flex-direction: row;
+.main-container,table{
+    width: 100%;
 }
 
 .btn-cnt{
@@ -31,12 +30,6 @@ h3{
     font-weight: lighter;
 }
 
-.employee-table{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
 
 table button{
     width: 8rem;

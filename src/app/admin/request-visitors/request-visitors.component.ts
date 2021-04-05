@@ -84,7 +84,7 @@ export class RequestVisitorsComponent implements OnInit {
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {  
       data:{
         title: "Add Visitor?",
-        message:`Add and Check-In ${this.visitor.name}?`
+        message:`Add  ${this.visitor.name} to request list?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

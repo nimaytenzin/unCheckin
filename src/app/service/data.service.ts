@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
   API_URL = environment.API_URL;
-  familyMember:any;
+  gatePassItems:any;
 
   constructor(
     private http: HttpClient
@@ -257,6 +257,56 @@ export class DataService {
     )
   }
   
+
+  //post Gatepass
+
+  postGatePass(item){
+    return this.http
+    .post<any>(`${this.API_URL}/gpass`,item,this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getIssuedGpass(){
+    return this.http
+    .get<any>(`${this.API_URL}/gpass/status/issued`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getListedGpass(){
+    return this.http
+    .get<any>(`${this.API_URL}/gpass/status/listed`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  
+  issueGatePass(id,item){
+    return this.http
+    .put<any>(`${this.API_URL}/gpass/status/${id}`,item,this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  //gateitems
+  getGateItems(id){
+    return this.http
+    .get<any>(`${this.API_URL}/gitem/${id}`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  markGateItemAsComplete(id,item){
+    return this.http
+    .put<any>(`${this.API_URL}/gitem/status/${id}`,item,this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
 
 
 

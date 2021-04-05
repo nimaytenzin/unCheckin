@@ -16,9 +16,18 @@ mat-drawer{
 }
 
 .side-nav button{
+  color: azure;
   height: 2.5rem;
+  margin-left: 1rem;
+  text-align: left;
+  font-size:large;
+  font-weight: lighter;
+  background-color: Transparent;
+  background-repeat:no-repeat;
   border: none;
-  background-image: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
 }
 
 .side-nav-header{
@@ -49,4 +58,18 @@ mat-drawer{
 .bottom-nav{
   position: absolute;
   bottom: 0;
+}
+
+.bottom-nav button{
+  color: azure;
+  height: 2.5rem;
+  margin-left: 1rem;
+  text-align: left;
+  font-size:large;
+  font-weight: lighter;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidde
 }

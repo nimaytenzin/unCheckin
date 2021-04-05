@@ -5,16 +5,17 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/service/data.service';
 import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
 
-export class Visitor{
-  name: string;
-  cid: string;
-  contact:number;
-  address:string;
-  agency:string;
-  arrivaltime:string;
+
+
+export class GatePassItem{
   staff_id:number;
+  agency:string;
+  purpose:string;
+  issue_date:string;
   status:string;
+  items:[]
 }
+
 
 @Component({
   selector: 'app-admin-gatepass',
@@ -25,7 +26,7 @@ export class AdminGatepassComponent implements OnInit {
   requestVisitorForm:FormGroup;
   agencyLists:[]
   staffLists:[]
-  visitor =new Visitor
+  gatePass = new GatePassItem
 
   constructor(
     public dialog: MatDialog,
@@ -68,30 +69,31 @@ export class AdminGatepassComponent implements OnInit {
 
 
   requestVisitor(){
-    this.visitor.name = this.requestVisitorForm.get('visitorName').value
-    this.visitor.cid = this.requestVisitorForm.get('visitorCid').value
-    this.visitor.contact = this.requestVisitorForm.get('visitorContact').value
-    this.visitor.address = this.requestVisitorForm.get('visitorAddress').value
-    this.visitor.agency = this.requestVisitorForm.get('visitorAgency').value
-    this.visitor.staff_id = this.requestVisitorForm.get('requestEmployee').value
-    this.visitor.arrivaltime = this.clock(this.requestVisitorForm.get('arrivalDate').value)
-    this.visitor.status = 'checked-out';
 
+    this.gatePass.staff_id =  this.requestVisitorForm.get('requestEmployee').value;
+    this.gatePass.agency = this.requestVisitorForm.get('agencyIssuedTo').value;
+    this.gatePass.purpose = this.requestVisitorForm.get('purpose').value;
+    this.gatePass.issue_date = this.clock( this.requestVisitorForm.get('issueDate').value)
+    this.gatePass.items = this.dataservice.gatePassItems;
+    this.gatePass.status = "listed";
+
+    console.log(this.gatePass)
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {  
       data:{
-        title: "Add Visitor?",
-        message:`Add and Check-In ${this.visitor.name}?`
+        title: "List Gatepass?",
+        message:`Add?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
       if(result === true){
-        this.dataservice.postNewVisitor(this.visitor).subscribe(res =>{
-          this.snackBar.open(`Added ${this.visitor.name}`, '',{
+        this.dataservice.postGatePass(this.gatePass).subscribe(res =>{
+          this.snackBar.open(`Listed `, '',{
             verticalPosition:'bottom',
             duration:3000
           }) 
         })
         this.requestVisitorForm.reset()
+        this.dataservice.gatePassItems = null
       }else{
         this.snackBar.open(`Cancelled`, '',{
           verticalPosition:'bottom',

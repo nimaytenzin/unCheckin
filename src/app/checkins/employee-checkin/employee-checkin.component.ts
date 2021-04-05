@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog,MatSnackBar } from '@angular/material';
 import { DataService } from 'src/app/service/data.service';
 import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
@@ -45,19 +46,36 @@ export class EmployeeCheckinComponent implements OnInit {
   dataSource:[]
   agencyLists:[]
 
+  selectAgencyForm:FormGroup
+
   checkInDisable:boolean;
   checkOutDisable:boolean;
   
   constructor(
     private dataservice:DataService,
     private dialog:MatDialog,
-    private snackbar:MatSnackBar
+    private snackbar:MatSnackBar,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
     this.dataservice.getAllAgency().subscribe(res=>{
       this.agencyLists=res.data;
     })
+    this.reactiveForms()
+    this.selectAgencyForm.controls['agency'].setValue(1)
+
+    
+    this.dataservice.getStaffsByAgency(1).subscribe(res => {
+      this.dataSource = res.data
+    })
+  }
+
+
+  reactiveForms(){
+    this.selectAgencyForm = this.fb.group({
+      agency:[]
+    });    
   }
 
   clock(){

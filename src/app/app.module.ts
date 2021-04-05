@@ -49,6 +49,14 @@ import { EmployeeLogTableComponent } from './table/employee-log-table/employee-l
 import { VisitorLogTableComponent } from './table/visitor-log-table/visitor-log-table.component';
 import { VehicleLogTableComponent } from './table/vehicle-log-table/vehicle-log-table.component';
 import { RequestVisitorsComponent } from './admin/request-visitors/request-visitors.component';
+import { GatepassTableComponent } from './admin/data-table/gatepass-table/gatepass-table.component';
+import { GatepassDialogComponent } from './admin/data-table/gatepass-dialog/gatepass-dialog.component';
+import { ListedGpassComponent } from './checkins/gatepass/listed-gpass/listed-gpass.component';
+import { IssuedGpassComponent } from './checkins/gatepass/issued-gpass/issued-gpass.component';
+import { ViewGpassComponent } from './dialogs/view-gpass/view-gpass.component';
+import { ReviewGpassComponent } from './dialogs/review-gpass/review-gpass.component';
+import { ListedGpassAdminComponent } from './admin/listed-gpass-admin/listed-gpass-admin.component';
+import { IssuedGpassAdminComponent } from './admin/issued-gpass-admin/issued-gpass-admin.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +84,14 @@ import { RequestVisitorsComponent } from './admin/request-visitors/request-visit
     VisitorLogTableComponent,
     VehicleLogTableComponent,
     RequestVisitorsComponent,
+    GatepassTableComponent,
+    GatepassDialogComponent,
+    ListedGpassComponent,
+    IssuedGpassComponent,
+    ViewGpassComponent,
+    ReviewGpassComponent,
+    ListedGpassAdminComponent,
+    IssuedGpassAdminComponent,
     ],
   imports: [
     BrowserModule,
@@ -111,6 +127,6 @@ import { RequestVisitorsComponent } from './admin/request-visitors/request-visit
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [ ConfirmDialogComponent,AgencyDialogComponent,EmployeeDialogComponent,VehicleDialogComponent],
+  entryComponents: [ ConfirmDialogComponent,AgencyDialogComponent,EmployeeDialogComponent,VehicleDialogComponent,GatepassDialogComponent,ViewGpassComponent,ReviewGpassComponent],
 })
 export class AppModule { }

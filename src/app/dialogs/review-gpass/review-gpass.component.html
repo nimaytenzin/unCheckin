@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="dataSource" >
+
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef > No. </th>
+      <td mat-cell *matCellDef="let element;let i = index"> {{i + 1}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="particulars">
+      <th mat-header-cell *matHeaderCellDef> Particulars </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="returnable">
+        <th mat-header-cell *matHeaderCellDef> Returnable </th>
+        <td mat-cell *matCellDef="let element"> {{element.returnable}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="action-link"> 
+          <button mat-raised-button class="check-in" (click)="markAsReturned(element)" [disabled]="verifyDisabled(element)">Mark as Returned</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,6 +1,10 @@
 <div class="visitors-table">
-    <div>
-        <button mat-button (click)="addAgency()">Add New Agency</button>
+    <div style="float: right;">
+
+        <button mat-mini-fab color="primary" (click)="addAgency()">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+        Add New Agency
     </div>
 
     <table mat-table [dataSource]="dataSource" >

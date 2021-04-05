@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -28,7 +29,9 @@ export class DashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'agency','type', 'time'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  constructor() { }
+  constructor(
+    private router:Router
+  ) { }
 
   ngOnInit() {
   }
@@ -59,6 +62,10 @@ export class DashboardComponent implements OnInit {
 
     this.date = dt+" "+date+" "+m+" "+year;
     this.time=hr+":"+min+":"+sec + " " + period;
+}
+
+logout(){
+  this.router.navigate(['login'])
 }
 
 }

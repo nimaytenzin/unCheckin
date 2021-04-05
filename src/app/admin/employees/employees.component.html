@@ -1,19 +1,24 @@
 <div class="main-container">
-    
-    <div style="display: flex;flex-direction: column;justify-content: center;align-items:center;">
-      <h3>Employees</h3>
-      <mat-form-field appearance="fill">
-        <mat-label>Select Agency</mat-label>
-        <mat-select  (selectionChange)="getStaffLists($event)">
-          <mat-option *ngFor="let option of agencyLists" [value]="option.id" >
-            {{option.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> 
+    <div>
+      <div style="float: right;" (click)="addEmployee()">
+        <button mat-mini-fab color="primary" >
+          <mat-icon>plus_one</mat-icon>
+        </button>
+        Add New Employee
+      </div> 
 
-      <div>
-          <button mat-button (click)="addEmployee()"> Add New Employee</button>
-      </div>
+      <div style="float: left;">
+        <form [formGroup]="selectAgencyForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Agency</mat-label>
+            <mat-select  (selectionChange)="getStaffLists($event)"   formControlName="agency">
+              <mat-option *ngFor="let option of agencyLists" [value]="option.id" >
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> 
+         </form>
+      </div>  
     </div>
   
     
