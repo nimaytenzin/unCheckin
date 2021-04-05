@@ -92,7 +92,5 @@ export class GatepassTableComponent implements OnInit {
 
   }
 
-  logData(){
-    console.log(this.dataSource)
-  }
+
 }

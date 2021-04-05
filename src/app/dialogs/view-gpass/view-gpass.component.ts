@@ -22,7 +22,6 @@ export class ViewGpassComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data.id, 'id of the gpass')
     this.dataservice.getGateItems(this.data.id).subscribe(res =>{
       this.dataSource = res
     })

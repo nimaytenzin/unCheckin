@@ -43,7 +43,6 @@ export class AddVisitorsComponent implements OnInit {
     this.reactiveForms()
     let g = new Date
     g.getMonth()
-    console.log(g.getMonth())
   
   }
 
@@ -84,7 +83,6 @@ export class AddVisitorsComponent implements OnInit {
     this.visitor.arrivaltime = this.clock();
     this.visitor.status = 'checked-out';
 
-    console.log(this.visitor)
 
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {  
       data:{
@@ -96,7 +94,6 @@ export class AddVisitorsComponent implements OnInit {
       if(result === true){
         this.dataService.postNewVisitor(this.visitor).subscribe(res =>{
           //add check in route here
-          console.log(res, 'response of post new visitor')
           this.checkInVisitor.visitor_id = res.id;
           this.checkInVisitor.type = "checked-in";
           this.checkInVisitor.time = this.clock();

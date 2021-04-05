@@ -27,7 +27,6 @@ export class IssuedGpassAdminComponent implements OnInit {
     this.reactiveForm()
     this.dataservice.getIssuedGpass().subscribe(res =>{
       this.dataSource = res
-      console.log(res)
     })
 
     setInterval(()=>{
@@ -51,7 +50,6 @@ export class IssuedGpassAdminComponent implements OnInit {
  }
  
  viewItems(e){
-  console.log(e)
   const confirmDialog = this.dialog.open(ViewGpassComponent, {
     data:{
       id: e.id

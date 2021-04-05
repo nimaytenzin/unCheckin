@@ -39,7 +39,6 @@ export class AgenciesComponent implements OnInit {
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
-      console.log(result)
       if(result !== null){
         this.dataservice.updateAgncy(e.id,result[0]).subscribe(res => {
           this.snackbar.open(`Updated `, '',{

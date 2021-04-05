@@ -34,9 +34,6 @@ export class MainDashComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataservice.getEmployeesLogToday().subscribe(res => {
-      console.log(res)
-    })
 
     this.dataservice.getAgencyCount().subscribe(res => {
       this.agencyCount = res

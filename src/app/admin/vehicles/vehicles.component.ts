@@ -24,7 +24,6 @@ export class VehiclesComponent implements OnInit {
   ngOnInit() {
     this.dataservice.getCars().subscribe(res => {
       this.dataSource = res.data 
-      console.log(res.data) 
     })
   }
 
@@ -43,9 +42,7 @@ export class VehiclesComponent implements OnInit {
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
-      console.log('dd',result[0])
       if(result !== null){
-        console.log('dd',result[0])
         this.dataservice.postVehicle(result[0]).subscribe(res => {
           this.snackbar.open(`Checked Out `, '',{
             verticalPosition:'bottom',
@@ -74,7 +71,6 @@ export class VehiclesComponent implements OnInit {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if(result !== null){
-        console.log('sdsd',result)
         this.dataservice.updateVehicle(e.id,result[0]).subscribe(res => {
           this.snackbar.open(`Updated `, '',{
             verticalPosition:'bottom',

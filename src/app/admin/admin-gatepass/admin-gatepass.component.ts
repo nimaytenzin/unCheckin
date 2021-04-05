@@ -77,7 +77,6 @@ export class AdminGatepassComponent implements OnInit {
     this.gatePass.items = this.dataservice.gatePassItems;
     this.gatePass.status = "listed";
 
-    console.log(this.gatePass)
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {  
       data:{
         title: "List Gatepass?",

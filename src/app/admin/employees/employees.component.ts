@@ -151,12 +151,9 @@ export class EmployeesComponent implements OnInit {
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
-      console.log(result)
       if(result !== null){
         this.dataservice.addNewEmployee(result[0]).subscribe(res => {
-          console.log(res)
         })
-        console.log(result)
       }else{
         this.snackbar.open(`Cancelled`, '',{
           verticalPosition:'bottom',

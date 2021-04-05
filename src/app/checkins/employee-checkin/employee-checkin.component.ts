@@ -126,7 +126,6 @@ export class EmployeeCheckinComponent implements OnInit {
   }
 
   checkOut(e){
-    console.log(e)
     this.employee.staff_id = e.id;
     this.employee.time = this.clock();
     this.employee.type = "checked-out";
@@ -158,7 +157,6 @@ export class EmployeeCheckinComponent implements OnInit {
   getStaffLists($event){
     //dynamically set the data source to the table
     
-    console.log($event)
 
     this.dataservice.getStaffsByAgency($event.value).subscribe(res => {
       this.dataSource = res.data

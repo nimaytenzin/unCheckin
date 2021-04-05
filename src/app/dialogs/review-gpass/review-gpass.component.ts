@@ -28,7 +28,6 @@ export class ReviewGpassComponent implements OnInit {
   ngOnInit() {
     this.dataservice.getGateItems(this.data.id).subscribe(res =>{
       this.dataSource = res
-      console.log(res,'gitems')
     })
 
 
@@ -41,7 +40,6 @@ export class ReviewGpassComponent implements OnInit {
   }
 
   markAsReturned(e){
-    console.log(e)
 
     let gitem = {
       id:e.id,
@@ -73,9 +71,6 @@ export class ReviewGpassComponent implements OnInit {
   }
 
 
-  markAsNotReturned(){
-    console.log('Marked as Not returned')
-  }
 
 
 

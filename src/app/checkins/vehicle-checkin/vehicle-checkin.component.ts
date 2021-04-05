@@ -45,7 +45,6 @@ export class VehicleCheckinComponent implements OnInit {
     this.reactiveForm()
     this.dataservice.getCars().subscribe(res => {
       this.dataSource = res.data
-      console.log(res.data)
     })
     this.dataservice.getDrivers().subscribe(res => {
       this.driverLists = res.data
@@ -163,7 +162,6 @@ export class VehicleCheckinComponent implements OnInit {
  refreshData(){
   this.dataservice.getCars().subscribe(res => {
     this.dataSource = res.data
-    console.log('Refreshed')
   })
  }
 

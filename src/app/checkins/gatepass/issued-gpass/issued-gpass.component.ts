@@ -62,12 +62,10 @@ export class IssuedGpassComponent implements OnInit {
  refreshData(){
   this.dataservice.getIssuedGpass().subscribe(res =>{
     this.dataSource = res
-    console.log(res)
   })
  }
  
  viewItems(e){
-   console.log(e)
   const confirmDialog = this.dialog.open(ReviewGpassComponent, {
     data:{
       id: e.id
@@ -90,7 +88,6 @@ export class IssuedGpassComponent implements OnInit {
  });
  confirmDialog.afterClosed().subscribe(result => {
    if(result === true){
-     console.log(gpass)
      this.dataservice.issueGatePass(e.id,gpass).subscribe(res => {
        this.snackbar.open(`Gate Pass Verified`, '',{
          verticalPosition:'bottom',
