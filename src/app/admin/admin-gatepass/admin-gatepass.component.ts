@@ -90,9 +90,12 @@ export class AdminGatepassComponent implements OnInit {
             verticalPosition:'bottom',
             duration:3000
           }) 
+
+          location.reload()
         })
         this.requestVisitorForm.reset()
         this.dataservice.gatePassItems = null
+  
       }else{
         this.snackBar.open(`Cancelled`, '',{
           verticalPosition:'bottom',
