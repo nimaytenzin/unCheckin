@@ -37,7 +37,7 @@ export class VehicleLogTableComponent implements OnInit {
   getFirstPage(){
  
     this.dataservice.getVehiclesLogToday().subscribe(res => {
-      this.http.get(`${res.first_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.first_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
@@ -49,7 +49,7 @@ export class VehicleLogTableComponent implements OnInit {
     this.dataservice.getVehiclesLogToday().subscribe(res => {
       if(res.prev_page_url !== null){
         alert('prev not  Null')
-        this.http.get(`${res.prev_page_url}`).subscribe(resp =>{
+        this.http.get<any>(`${res.prev_page_url}`).subscribe(resp =>{
           console.log(resp)
           this.dataSource = resp.data
         }) 
@@ -63,7 +63,7 @@ export class VehicleLogTableComponent implements OnInit {
       if(res.next_page_url !== null){
         alert('next not  Null')
 
-        this.http.get(`${res.next_page_url}`).subscribe(resp =>{
+        this.http.get<any>(`${res.next_page_url}`).subscribe(resp =>{
           console.log(resp)
           this.dataSource = resp.data
         })
@@ -74,7 +74,7 @@ export class VehicleLogTableComponent implements OnInit {
 
   getLastPage(){
     this.dataservice.getVehiclesLogToday().subscribe(res => {
-      this.http.get(`${res.last_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.last_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })

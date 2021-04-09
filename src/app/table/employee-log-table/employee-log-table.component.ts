@@ -33,7 +33,7 @@ export class EmployeeLogTableComponent implements OnInit {
   getFirstPage(){
  
     this.dataservice.getEmployeesLogToday().subscribe(res => {
-      this.http.get(`${res.first_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.first_page_url}`).subscribe(resp =>{
         this.dataSource = resp.data
       })
      
@@ -42,7 +42,7 @@ export class EmployeeLogTableComponent implements OnInit {
 
   getPreviousPage(){
     this.dataservice.getEmployeesLogToday().subscribe(res => {
-      this.http.get(`${res.prev_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.prev_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
@@ -53,7 +53,7 @@ export class EmployeeLogTableComponent implements OnInit {
 
   getNextPage(){
     this.dataservice.getEmployeesLogToday().subscribe(res => {
-      this.http.get(`${res.next_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.next_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
 
@@ -66,7 +66,7 @@ export class EmployeeLogTableComponent implements OnInit {
 
   getLastPage(){
     this.dataservice.getEmployeesLogToday().subscribe(res => {
-      this.http.get(`${res.last_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.last_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
