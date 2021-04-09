@@ -31,6 +31,7 @@ export class AddVisitorsComponent implements OnInit {
   addVisitorForm:FormGroup;
   visitor= new Visitor;
   checkInVisitor = new CheckInVisitor
+  disableForm = false;
   constructor(
     public dialog: MatDialog,
     private fb:FormBuilder,
