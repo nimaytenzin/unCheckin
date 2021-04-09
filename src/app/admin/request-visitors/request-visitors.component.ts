@@ -27,6 +27,7 @@ export class RequestVisitorsComponent implements OnInit {
   agencyLists:[]
   staffLists:[]
   visitor =new Visitor
+  disableForm = false
 
   constructor(
     public dialog: MatDialog,
