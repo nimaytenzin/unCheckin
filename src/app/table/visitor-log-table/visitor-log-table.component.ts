@@ -35,7 +35,7 @@ export class VisitorLogTableComponent implements OnInit {
   getFirstPage(){
  
     this.dataservice.getVisitorsLogToday().subscribe(res => {
-      this.http.get(`${res.first_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.first_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
@@ -45,7 +45,7 @@ export class VisitorLogTableComponent implements OnInit {
 
   getPreviousPage(){
     this.dataservice.getVisitorsLogToday().subscribe(res => {
-      this.http.get(`${res.prev_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.prev_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
@@ -67,7 +67,7 @@ export class VisitorLogTableComponent implements OnInit {
 
   getLastPage(){
     this.dataservice.getVisitorsLogToday().subscribe(res => {
-      this.http.get(`${res.last_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.last_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
