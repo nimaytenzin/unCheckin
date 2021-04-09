@@ -27,6 +27,7 @@ export class AdminGatepassComponent implements OnInit {
   agencyLists:[]
   staffLists:[]
   gatePass = new GatePassItem
+  disableForm = false
 
   constructor(
     public dialog: MatDialog,
