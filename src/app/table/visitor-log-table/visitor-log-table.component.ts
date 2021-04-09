@@ -56,7 +56,7 @@ export class VisitorLogTableComponent implements OnInit {
 
   getNextPage(){
     this.dataservice.getVisitorsLogToday().subscribe(res => {
-      this.http.get(`${res.next_page_url}`).subscribe(resp =>{
+      this.http.get<any>(`${res.next_page_url}`).subscribe(resp =>{
         console.log(resp)
         this.dataSource = resp.data
       })
